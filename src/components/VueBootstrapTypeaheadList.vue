@@ -1,11 +1,13 @@
 <template>
   <ul class="list-group shadow">
-    <vue-bootstrap-typeahead-list-item
-      v-for="(item, index) in matchedItems" :key="item + index"
-      v-html="highlight(item)"
-      :background-variant="backgroundVariant"
-      :text-variant="textVariant"
-    />
+    <transition-group name="expand">
+      <vue-bootstrap-typeahead-list-item
+        v-for="(item, index) in matchedItems" :key="item + index"
+        v-html="highlight(item)"
+        :background-variant="backgroundVariant"
+        :text-variant="textVariant"
+      />
+    </transition-group>
   </ul>
 </template>
 

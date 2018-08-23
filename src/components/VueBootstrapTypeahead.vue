@@ -11,6 +11,8 @@
         :placeholder="placeholder"
         :aria-label="placeholder"
         :value="value"
+        @focus="isFocused = true"
+        @blur="isFocused = false"
         @input="$emit('input', $event.target.value)"
         autocomplete="off"
       />
@@ -23,6 +25,7 @@
     <vue-bootstrap-typeahead-list
       class="vbt-autcomplete-list"
       ref="list"
+      v-show="isFocused"
       :query="value"
       :data="data"
       :serializer="serializer"
@@ -87,8 +90,10 @@ export default {
     }
   },
 
-  watch: {
-
+  data() {
+    return {
+      isFocused: false
+    }
   },
 
   mounted() {
