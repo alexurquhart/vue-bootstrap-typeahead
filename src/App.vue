@@ -1,28 +1,41 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>vue-bootstrap-typeahead</h1>
+        <h3>Search Text: {{searchText}}</h3>
+      </div>
+    </div>
+    <div class="bg-primary text-light row align-items-center">
+      <div class="col">
+        <vue-bootstrap-typeahead
+          v-model="searchText"
+          size="lg"
+          placeholder="Username"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import VueBootstrapTypeahead from './components/VueBootstrapTypeahead'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    VueBootstrapTypeahead
+  },
+  data() {
+    return {
+      searchText: ''
+    }
   }
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+  .bg-primary {
+    height: 100px;
+  }
 </style>
