@@ -1,14 +1,12 @@
 <template>
-  <ul class="list-group shadow">
-    <transition-group name="expand">
-      <vue-bootstrap-typeahead-list-item
-        v-for="(item, index) in matchedItems" :key="item + index"
-        v-html="highlight(item)"
-        :background-variant="backgroundVariant"
-        :text-variant="textVariant"
-      />
-    </transition-group>
-  </ul>
+  <div class="list-group shadow">
+    <vue-bootstrap-typeahead-list-item
+      v-for="(item, index) in matchedItems" :key="item + index"
+      v-html="highlight(item)"
+      :background-variant="backgroundVariant"
+      :text-variant="textVariant"
+    />
+  </div>
 </template>
 
 <script>
@@ -45,12 +43,10 @@ export default {
       default: ''
     },
     backgroundVariant: {
-      type: String,
-      default: 'light'
+      type: String
     },
     textVariant: {
-      type: String,
-      default: 'dark'
+      type: String
     },
     maxMatches: {
       type: Number,

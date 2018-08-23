@@ -1,5 +1,12 @@
 <template>
-  <li :class="textClasses"><slot></slot></li>
+  <a
+    href="#"
+    :class="textClasses"
+    @mouseover="active = true"
+    @mouseout="active = false"
+  >
+    <slot></slot>
+  </a>
 </template>
 
 <script>
@@ -8,19 +15,26 @@ export default {
 
   props: {
     backgroundVariant: {
-      type: String,
-      default: 'light'
+      type: String
     },
     textVariant: {
-      type: String,
-      default: 'dark'
+      type: String
+    }
+  },
+
+  data() {
+    return {
+      active: false
     }
   },
 
   computed: {
     textClasses() {
-      let classes = `bg-${this.backgroundVariant} text-${this.textVariant}`
-      return `list-group-item ${classes}`
+      let classes = ''
+      classes += this.active ? 'active' : ''
+      classes += this.backgroundVariant ? ` bg-${this.backgroundVariant}` : ''
+      classes += this.textVariant ? ` text-${this.textVariant}` : ''
+      return `list-group-item list-group-item-action ${classes}`
     }
   }
 }

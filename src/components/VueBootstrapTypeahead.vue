@@ -64,12 +64,10 @@ export default {
       validator: d => d instanceof Function
     },
     backgroundVariant: {
-      type: String,
-      default: 'light'
+      type: String
     },
     textVariant: {
-      type: String,
-      default: 'dark'
+      type: String
     },
     placeholder: String,
     prepend: String,
