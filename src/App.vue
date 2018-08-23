@@ -9,6 +9,8 @@
     <div class="bg-primary text-light row align-items-center">
       <div class="col">
         <vue-bootstrap-typeahead
+          :data="countries"
+          :serializer="c => c.name"
           v-model="searchText"
           size="lg"
           placeholder="Username"
@@ -28,8 +30,13 @@ export default {
   },
   data() {
     return {
-      searchText: ''
+      searchText: '',
+      countries: []
     }
+  },
+  async mounted() {
+    const res = await fetch('/countries.json')
+    this.countries = await res.json()
   }
 }
 </script>

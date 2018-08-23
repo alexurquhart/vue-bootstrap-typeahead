@@ -23,7 +23,11 @@
     <vue-bootstrap-typeahead-list
       class="vbt-autcomplete-list"
       ref="list"
+      :query="value"
       :data="data"
+      :serializer="serializer"
+      :background-variant="backgroundVariant"
+      :text-variant="textVariant"
     />
   </div>
 </template>
@@ -46,6 +50,24 @@ export default {
       validator: size => ['lg', 'sm'].indexOf(size) > -1
     },
     value: String,
+    data: {
+      type: Array,
+      required: true,
+      validator: d => d instanceof Array
+    },
+    serializer: {
+      type: Function,
+      default: (d) => d,
+      validator: d => d instanceof Function
+    },
+    backgroundVariant: {
+      type: String,
+      default: 'light'
+    },
+    textVariant: {
+      type: String,
+      default: 'dark'
+    },
     placeholder: String,
     prepend: String,
     append: String
@@ -54,16 +76,6 @@ export default {
   computed: {
     sizeClasses() {
       return this.size ? `input-group input-group-${this.size}` : 'input-group'
-    }
-  },
-
-  data() {
-    return {
-      data: [
-        'asdf',
-        'asdf',
-        'asdf'
-      ]
     }
   },
 
@@ -81,9 +93,11 @@ export default {
 
   mounted() {
     this.$_ro = new ResizeObserver(e => {
-      this.resizeList(e[0].target)
+      this.resizeList(this.$refs.input)
     })
+    console.log(this.$refs.list)
     this.$_ro.observe(this.$refs.input)
+    this.$_ro.observe(this.$refs.list.$el)
   },
 
   beforeDestroy() {
