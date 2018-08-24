@@ -27,13 +27,62 @@ export default {
 }
 ```
 
-Basic Usage
+### Basic Usage
+The only required attribute is a `data` array.
 
 ```html
 <vue-bootstrap-typeahead 
   v-model="query"
   :data="['Canada', 'USA', 'Mexico']"
 />
+```
+
+### Working with API's
+
+The typeahead does not fetch any data, for maximum flexibility it will only work with already loaded API responses in the form of arrays. The `serializer` attribute allows you to define a function to turn each array item in the response into a text string, which will appear in the results.
+
+```html
+<template>
+  <vue-bootstrap-typeahead
+    :data="addresses"
+    v-model="addressSearch"
+    size="lg"
+    :serializer="s => s.text"
+    placeholder="Type an address..."
+    @hit="selectedAddress = $event"
+  >
+</template>
+
+<script>
+import _ from 'underscore'
+
+const API_URL = 'https://api-url-here.com?query=:query'
+
+export default {
+  name: 'TestComponent',
+
+  data() {
+    return {
+      addresses: [],
+      addressSearch: '',
+      selectedAddress: null
+    }
+  },
+
+  methods: {
+    async getAddresses(query) {
+      const res = await fetch(API_URL.replace(':query', query))
+      const suggestions = await res.json()
+      this.addresses = suggestions.suggestions
+    }
+  },
+
+  watch: {
+    addressSearch: _.debounce(function(addr) { this.getAddresses(addr) }, 500)
+  }
+}
+</script>
+
 ```
 
 ### Attributes
@@ -59,12 +108,8 @@ Name | Description
 
 ### Slots
 
-There are `prepend` and `append` slots available for adding buttons or other markup.
+There are `prepend` and `append` slots available for adding buttons or other markup. Overrides the `prepend` and `append` attributes.
 
-## Examples
+## Examples/Demo
 
-
-
-## Contributing
-
-TODO
+Clone this repository and run `npm run serve` and navigate to http://localhost:8080 to launch some examples. The source is in `src/views/Home.vue`
