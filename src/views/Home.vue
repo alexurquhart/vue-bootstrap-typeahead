@@ -27,6 +27,9 @@
     <div class="row">
       <div class="col">
         <h2>Demo Address Search</h2>
+        <p class="card-text">
+          External API. Uses the ArcGIS geocoding suggestion service.
+        </p>
         <vue-bootstrap-typeahead
           :data="addresses"
           v-model="addressSearch"
@@ -36,7 +39,7 @@
           @hit="selectedAddress = $event"
         >
           <template slot="append">
-            <button class="btn btn-outline-secondary" type="button">Search</button>
+            <button class="btn btn-outline-secondary" type="button">Do Something</button>
           </template>
         </vue-bootstrap-typeahead>
       </div>
