@@ -118,6 +118,6 @@ Clone this repository and run `npm run serve` and navigate to http://localhost:8
 
 ## Sites using this component
 
-- [plottr.io] - Plan and map your running/cycling routes. This component is an offshoot from this project.
+- [plottr.io](https://plottr.io) - Plan and map your running/cycling routes. This component is an offshoot from this project.
 
 Send a pull request to add your site to this list!
