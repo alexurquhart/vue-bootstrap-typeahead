@@ -28,14 +28,18 @@
     </div>
     <div class="bg-primary text-light row align-items-center">
       <div class="col">
-        <vue-bootstrap-typeahead
+        <!-- <vue-bootstrap-typeahead
           :data="addresses"
           v-model="addressSearch"
           size="lg"
           :serializer="s => s.text"
           placeholder="Type an address..."
           @hit="selectedAddress = $event"
-        />
+        /> -->
+<vue-bootstrap-typeahead 
+  v-model="addressSearch"
+  :data="['Canada', 'USA', 'Mexico']"
+/>
       </div>
     </div>
     <div class="row">

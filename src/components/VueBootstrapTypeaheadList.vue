@@ -48,7 +48,7 @@ export default {
       type: Number,
       default: 10
     },
-    minChars: {
+    minMatchingChars: {
       type: Number,
       default: 2
     }
@@ -72,7 +72,7 @@ export default {
     },
 
     matchedItems() {
-      if (this.query.length === 0 || this.query.length < this.minChars) {
+      if (this.query.length === 0 || this.query.length < this.minMatchingChars) {
         return []
       }
 

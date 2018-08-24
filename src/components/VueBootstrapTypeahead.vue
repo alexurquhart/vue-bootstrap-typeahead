@@ -32,6 +32,7 @@
       :data="formattedData"
       :background-variant="backgroundVariant"
       :text-variant="textVariant"
+      :minMatchingChars="minMatchingChars"
       @hit="handleHit"
     />
   </div>
@@ -73,7 +74,7 @@ export default {
       type: Number,
       default: 10
     },
-    minChars: {
+    minMatchingChars: {
       type: Number,
       default: 2
     },
