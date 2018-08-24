@@ -1,6 +1,6 @@
 # vue-bootstrap-typeahead
 
-A simple `list-group` based typeahead using Bootstrap 4 and Vue 2
+A simple `list-group` based typeahead using Bootstrap 4 and Vue 2.
 
 <img src="https://raw.githubusercontent.com/alexurquhart/vue-bootstrap-typeahead/master/assets/screenshot.png" alt="Preview image of the vue-bootstrap-typeahead component">
 
@@ -115,3 +115,9 @@ There are `prepend` and `append` slots available for adding buttons or other mar
 ## Examples/Demo
 
 Clone this repository and run `npm run serve` and navigate to http://localhost:8080 to launch some examples. The source is in `src/views/Home.vue`
+
+## Sites using this component
+
+- [plottr.io] - Plan and map your running/cycling routes. This component is an offshoot from this project.
+
+Send a pull request to add your site to this list!
