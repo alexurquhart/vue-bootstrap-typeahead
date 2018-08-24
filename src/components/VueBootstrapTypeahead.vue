@@ -1,8 +1,10 @@
 <template>
   <div>
     <div :class="sizeClasses">
-      <div v-if="$slots.prepend" class="input-group-prepend">
-        <slot name="prepend"></slot>
+      <div v-if="$slots.prepend || prepend" class="input-group-prepend">
+        <slot name="prepend">
+          <span class="input-group-text">{{ prepend }}</span>
+        </slot>
       </div>
       <input
         ref="input"
@@ -12,11 +14,11 @@
         :aria-label="placeholder"
         :value="value"
         @focus="isFocused = true"
-        @blur="isFocused = false"
+        @blur="handleBlur"
         @input="$emit('input', $event.target.value)"
         autocomplete="off"
       />
-      <div v-if="$slots.append" class="input-group-append">
+      <div v-if="$slots.append || append" class="input-group-append">
         <slot name="append">
           <span class="input-group-text">{{ append }}</span>
         </slot>
@@ -27,10 +29,10 @@
       ref="list"
       v-show="isFocused"
       :query="value"
-      :data="data"
-      :serializer="serializer"
+      :data="formattedData"
       :background-variant="backgroundVariant"
       :text-variant="textVariant"
+      @hit="handleHit"
     />
   </div>
 </template>
@@ -38,6 +40,7 @@
 <script>
 import VueBootstrapTypeaheadList from './VueBootstrapTypeaheadList.vue'
 import ResizeObserver from 'resize-observer-polyfill'
+import Vue from 'vue';
 
 export default {
   name: 'VueBootstrapTypehead',
@@ -77,6 +80,16 @@ export default {
   computed: {
     sizeClasses() {
       return this.size ? `input-group input-group-${this.size}` : 'input-group'
+    },
+
+    formattedData() {
+      return this.data.map((d, i) => {
+        return {
+          id: i,
+          data: d,
+          text: this.serializer(d)
+        }
+      })
     }
   },
 
@@ -85,6 +98,21 @@ export default {
       const rect = el.getBoundingClientRect()
       this.$refs.list.$el.style.top = rect.height + 5 + 'px'
       this.$refs.list.$el.style.width = rect.width + 'px'
+    },
+
+    handleHit(evt) {
+      this.$emit('input', evt.text)
+      this.$emit('hit', evt.data)
+      this.$refs.input.blur()
+      this.isFocused = false
+    },
+
+    handleBlur(evt) {
+      const tgt = evt.relatedTarget
+      if (tgt && tgt.classList.contains('vbst-item')) {
+        return
+      }
+      this.isFocused = false
     }
   },
 
@@ -98,7 +126,6 @@ export default {
     this.$_ro = new ResizeObserver(e => {
       this.resizeList(this.$refs.input)
     })
-    console.log(this.$refs.list)
     this.$_ro.observe(this.$refs.input)
     this.$_ro.observe(this.$refs.list.$el)
   },

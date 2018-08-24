@@ -1,10 +1,11 @@
 <template>
   <div class="list-group shadow">
     <vue-bootstrap-typeahead-list-item
-      v-for="(item, index) in matchedItems" :key="item + index"
-      v-html="highlight(item)"
+      v-for="(item, id) in matchedItems" :key="id"
+      v-html="highlight(item.text)"
       :background-variant="backgroundVariant"
       :text-variant="textVariant"
+      v-on:click.native="$emit('hit', item)"
     />
   </div>
 </template>
@@ -32,11 +33,6 @@ export default {
       type: Array,
       required: true,
       validator: d => d instanceof Array
-    },
-    serializer: {
-      type: Function,
-      default: (d) => d,
-      validator: d => d instanceof Function
     },
     query: {
       type: String,
@@ -71,10 +67,6 @@ export default {
       }
     },
 
-    serializedItems() {
-      return this.data.map(i => this.serializer(i))
-    },
-
     escapedQuery() {
       return escapeRegExp(sanitize(this.query))
     },
@@ -87,14 +79,14 @@ export default {
       const re = new RegExp(this.escapedQuery, 'gi')
 
       // Filter, sort, and concat
-      return this.serializedItems
-        .filter(i => i.match(re) !== null)
+      return this.data
+        .filter(i => i.text.match(re) !== null)
         .sort((a, b) => {
-          const aMatches = a.match(re).length
-          const bMatches = b.match(re).length
+          const aIndex = a.text.indexOf(a.text.match(re)[0])
+          const bIndex = b.text.indexOf(b.text.match(re)[0])
 
-          if (aMatches < bMatches) { return 1 }
-          if (aMatches > bMatches) { return -1 }
+          if (aIndex < bIndex) { return -1 }
+          if (aIndex > bIndex) { return 1 }
           return 0
         }).slice(0, this.maxMatches)
     }

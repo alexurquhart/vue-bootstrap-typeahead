@@ -34,7 +34,7 @@ export default {
       classes += this.active ? 'active' : ''
       classes += this.backgroundVariant ? ` bg-${this.backgroundVariant}` : ''
       classes += this.textVariant ? ` text-${this.textVariant}` : ''
-      return `list-group-item list-group-item-action ${classes}`
+      return `vbst-item list-group-item list-group-item-action ${classes}`
     }
   }
 }

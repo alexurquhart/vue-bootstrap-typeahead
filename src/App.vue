@@ -6,7 +6,7 @@
         <h3>Search Text: {{searchText}}</h3>
       </div>
     </div>
-    <div class="bg-primary text-light row align-items-center">
+    <div class="bg-dark text-light row align-items-center">
       <div class="col">
         <vue-bootstrap-typeahead
           :data="countries"
@@ -14,6 +14,7 @@
           v-model="searchText"
           size="lg"
           placeholder="Username"
+          @hit="handleHit"
         />
       </div>
     </div>
@@ -34,6 +35,11 @@ export default {
       countries: []
     }
   },
+  methods: {
+    handleHit(evt) {
+      console.log(evt)
+    }
+  },
   async mounted() {
     const res = await fetch('/countries.json')
     this.countries = await res.json()
@@ -42,7 +48,7 @@ export default {
 </script>
 
 <style scoped>
-  .bg-primary {
-    height: 100px;
+  .bg-dark {
+    height: 130px;
   }
 </style>
