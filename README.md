@@ -115,3 +115,9 @@ There are `prepend` and `append` slots available for adding buttons or other mar
 ## Examples/Demo
 
 Clone this repository and run `npm run serve` and navigate to http://localhost:8080 to launch some examples. The source is in `src/views/Home.vue`
+
+## Sites using this component
+
+- [plottr.io](https://plottr.io) - Plan and map your running/cycling routes. This component is an offshoot from this project.
+
+Send a pull request to add your site to this list!
