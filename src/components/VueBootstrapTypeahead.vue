@@ -27,7 +27,7 @@
     <vue-bootstrap-typeahead-list
       class="vbt-autcomplete-list"
       ref="list"
-      v-show="isFocused"
+      v-show="isFocused && data.length > 0"
       :query="value"
       :data="formattedData"
       :background-variant="backgroundVariant"
@@ -41,7 +41,6 @@
 <script>
 import VueBootstrapTypeaheadList from './VueBootstrapTypeaheadList.vue'
 import ResizeObserver from 'resize-observer-polyfill'
-import Vue from 'vue';
 
 export default {
   name: 'VueBootstrapTypehead',
@@ -102,7 +101,7 @@ export default {
   methods: {
     resizeList(el) {
       const rect = el.getBoundingClientRect()
-      this.$refs.list.$el.style.top = rect.height + 5 + 'px'
+      // this.$refs.list.$el.style.top = rect.height + 5 + 'px'
       this.$refs.list.$el.style.width = rect.width + 'px'
     },
 
@@ -144,6 +143,7 @@ export default {
 
 <style scoped>
   .vbt-autcomplete-list {
+    padding-top: 5px;
     position: absolute;
     max-height: 350px;
     overflow-y: auto;
