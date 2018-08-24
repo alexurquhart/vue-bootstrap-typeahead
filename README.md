@@ -1,6 +1,6 @@
 # vue-bootstrap-typeahead
 
-A simple `list-group` based typeahead using Bootstrap 4 and Vue 2
+A simple `list-group` based typeahead/autocomplete using Bootstrap 4 and Vue 2
 
 <img src="https://raw.githubusercontent.com/alexurquhart/vue-bootstrap-typeahead/master/assets/screenshot.png" alt="Preview image of the vue-bootstrap-typeahead component">
 

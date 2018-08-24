@@ -88,6 +88,9 @@ export default {
     },
 
     formattedData() {
+      if (!(this.data instanceof Array)) {
+        return []
+      }
       return this.data.map((d, i) => {
         return {
           id: i,
