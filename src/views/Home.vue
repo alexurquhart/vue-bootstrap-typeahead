@@ -1,49 +1,27 @@
 <template>
   <div>
     <div class="row">
-      <div class="col">
-        <h1>vue-bootstrap-typeahead</h1>
-        <h3>Search Text: {{cntrySearch}}</h3>
+      <div class="col-md-6">
+        <h2>A simple typeahead for Vue 2 using Bootstrap 4</h2>
+
+        <ul>
+          <li><code>bootstrap-vue</code> compatible</li>
+        </ul>
       </div>
-    </div>
-    <div class="bg-dark text-light row align-items-center">
-      <div class="col">
-        <vue-bootstrap-typeahead
-          :data="countries"
-          :serializer="c => c.name"
-          v-model="cntrySearch"
-          size="lg"
-          placeholder="Select a country..."
-          @hit="handleHit"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col card">
-        <h5 class="card-title">Selected Object</h5>
-        <div class="card-body">
-          <pre>{{ selectedCountry | stringify }}</pre>
-        </div>
-      </div>
-    </div>
-    <div class="bg-primary text-light row align-items-center">
-      <div class="col">
-        <vue-bootstrap-typeahead
-          :data="addresses"
-          v-model="addressSearch"
-          size="lg"
-          :serializer="s => s.text"
-          placeholder="Type an address..."
-          @hit="selectedAddress = $event"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col card">
-        <h5 class="card-title">Selected Object</h5>
-        <div class="card-body">
-          <pre>{{ selectedAddress | stringify }}</pre>
-        </div>
+      <div class="col-md-6">
+        <b-card title="Demo Address Search">
+          <p class="card-text">
+            Type any address:
+          </p>
+          <vue-bootstrap-typeahead
+            :data="addresses"
+            v-model="addressSearch"
+            size="lg"
+            :serializer="s => s.text"
+            placeholder="Type an address..."
+            @hit="selectedAddress = $event"
+          />
+        </b-card>
       </div>
     </div>
   </div>
@@ -79,7 +57,6 @@ export default {
       const res = await fetch(API_URL.replace(':keyword', query))
       const suggestions = await res.json()
       this.addresses = suggestions.suggestions
-      console.log(this.addresses)
     }
   },
 
@@ -99,7 +76,7 @@ export default {
 </script>
 
 <style scoped>
-  .bg-dark {
-    height: 130px;
+  .row {
+    padding-top: 1rem;
   }
 </style>
