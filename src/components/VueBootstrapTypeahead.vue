@@ -9,7 +9,7 @@
       <input
         ref="input"
         type="search"
-        class="form-control"
+        :class="`form-control ${inputClass}}`"
         :placeholder="placeholder"
         :aria-label="placeholder"
         :value="value"
@@ -66,11 +66,16 @@ export default {
       default: (d) => d,
       validator: d => d instanceof Function
     },
-    backgroundVariant: {
-      type: String
+    backgroundVariant: String,
+    textVariant: String,
+    inputClass: String,
+    maxMatches: {
+      type: Number,
+      default: 10
     },
-    textVariant: {
-      type: String
+    minChars: {
+      type: Number,
+      default: 2
     },
     placeholder: String,
     prepend: String,

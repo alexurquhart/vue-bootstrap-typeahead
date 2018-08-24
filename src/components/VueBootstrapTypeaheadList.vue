@@ -5,7 +5,7 @@
       v-html="highlight(item.text)"
       :background-variant="backgroundVariant"
       :text-variant="textVariant"
-      v-on:click.native="$emit('hit', item)"
+      @click.native="$emit('hit', item)"
     />
   </div>
 </template>
