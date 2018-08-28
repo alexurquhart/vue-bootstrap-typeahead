@@ -9,7 +9,7 @@
       <input
         ref="input"
         type="search"
-        :class="`form-control ${inputClass}}`"
+        :class="`form-control ${inputClass}`"
         :placeholder="placeholder"
         :aria-label="placeholder"
         :value="value"
@@ -68,7 +68,10 @@ export default {
     },
     backgroundVariant: String,
     textVariant: String,
-    inputClass: String,
+    inputClass: {
+      type: String,
+      default: ''
+    },
     maxMatches: {
       type: Number,
       default: 10
