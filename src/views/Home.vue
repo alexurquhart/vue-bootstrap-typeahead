@@ -24,6 +24,7 @@
         </b-card>
       </div>
     </div>
+    <div class="big row"></div>
     <div class="row">
       <div class="col">
         <h2>Demo Address Search</h2>
@@ -107,5 +108,9 @@ export default {
 <style scoped>
   .row {
     padding-top: 1rem;
+  }
+
+  .big {
+    height: 500px;
   }
 </style>
