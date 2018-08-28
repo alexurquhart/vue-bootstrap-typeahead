@@ -5,7 +5,7 @@
       v-html="highlight(item.text)"
       :background-variant="backgroundVariant"
       :text-variant="textVariant"
-      @click.native="$emit('hit', item)"
+      @click.native="handleHit(item, $event)"
     />
   </div>
 </template>
@@ -89,6 +89,13 @@ export default {
           if (aIndex > bIndex) { return 1 }
           return 0
         }).slice(0, this.maxMatches)
+    }
+  },
+
+  methods: {
+    handleHit(item, evt) {
+      this.$emit('hit', item)
+      evt.preventDefault()
     }
   }
 }
