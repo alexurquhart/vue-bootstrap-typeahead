@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row">
+    <div class="row mb-5">
       <div class="col-md-6">
         <h2>A simple typeahead for Vue 2 using Bootstrap 4</h2>
         <ul>
@@ -21,7 +21,11 @@
             :serializer="s => s.name"
             placeholder="Canada, United States, etc..."
             @hit="selectedCountry = $event"
-          />
+          >
+            <template slot="suggestion" slot-scope="{ data, htmlText }">
+              <span v-html="htmlText"></span>&nbsp;<small>{{ data.code }}</small>
+            </template>
+          </vue-bootstrap-typeahead>
         </b-card>
       </div>
     </div>
@@ -46,7 +50,7 @@
         </vue-bootstrap-typeahead>
       </div>
     </div>
-    <div class="row">
+    <div class="row mb-5">
       <div class="col">
         <b-card title="Selected Address">
           <p class="card-text">

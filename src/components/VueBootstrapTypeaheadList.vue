@@ -2,11 +2,16 @@
   <div class="list-group shadow">
     <vue-bootstrap-typeahead-list-item
       v-for="(item, id) in matchedItems" :key="id"
-      v-html="highlight(item.text)"
+      :data="item.data"
+      :html-text="highlight(item.text)"
       :background-variant="backgroundVariant"
       :text-variant="textVariant"
       @click.native="handleHit(item, $event)"
-    />
+    >
+      <template v-if="$scopedSlots.suggestion" slot="suggestion" slot-scope="{ data, htmlText }">
+        <slot name="suggestion" v-bind="{ data, htmlText }" />
+      </template>
+    </vue-bootstrap-typeahead-list-item>
   </div>
 </template>
 
