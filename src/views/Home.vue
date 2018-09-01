@@ -17,7 +17,6 @@
           <vue-bootstrap-typeahead
             :data="countries"
             v-model="cntrySearch"
-            background-variant="light"
             :serializer="s => s.name"
             placeholder="Canada, United States, etc..."
             @hit="selectedCountry = $event"
