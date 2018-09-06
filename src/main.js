@@ -2,8 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import BootstrapVue from 'bootstrap-vue'
+import vueHljs from 'vue-hljs'
+import 'highlight.js/styles/color-brewer.css'
+import 'whatwg-fetch'
 
-import 'bootstrap/scss/bootstrap.scss'
+Vue.use(vueHljs)
 
 Vue.config.productionTip = false
 

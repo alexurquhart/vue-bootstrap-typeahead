@@ -114,6 +114,27 @@ Name | Description
 
 There are `prepend` and `append` slots available for adding buttons or other markup. Overrides the `prepend` and `append` attributes.
 
+### Scoped Slots
+
+You can use a [scoped slot](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots) called `suggestion` to define custom content
+for the suggestion `list-item`'s
+
+```html
+<vue-bootstrap-typeahead
+  :data="countries"
+  v-model="cntrySearch"
+  :serializer="s => s.name"
+  placeholder="Canada, United States, etc..."
+  @hit="selectedCountry = $event"
+>
+  <!-- htmlText is bound to the matched text derived from the serializer function -->
+  <!-- data is bound to the matching array element in the data prop -->
+  <template slot="suggestion" slot-scope="{ data, htmlText }">
+    <span v-html="htmlText"></span>&nbsp;<small>{{ data.code }}</small>
+  </template>
+</vue-bootstrap-typeahead>
+```
+
 ## Examples/Demo
 
 Clone this repository and run `npm run serve` and navigate to http://localhost:8080 to launch some examples. The source is in `src/views/Home.vue`
