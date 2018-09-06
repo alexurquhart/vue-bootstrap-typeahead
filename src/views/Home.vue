@@ -12,9 +12,11 @@
           <li>Append and prepend icons and buttons</li>
           <li>Works well with API JSON responses</li>
         </ul>
-        <a href="https://www.npmjs.com/package/vue-bootstrap-typeahead" target="_blank">
-          <img class="mb-3 img-fluid" src="https://nodei.co/npm/vue-bootstrap-typeahead.png" />
-        </a>
+        <div class="d-flex justify-content-center">
+          <a href="https://www.npmjs.com/package/vue-bootstrap-typeahead" target="_blank">
+            <img class="mb-3 img-fluid" src="https://nodei.co/npm/vue-bootstrap-typeahead.png" />
+          </a>
+        </div>
       </div>
       <div class="col-md-6">
         <b-card class="shadow-sm" title="Demo Country Search">
@@ -76,13 +78,6 @@ export default {
   v-model="query"
   :data="['Canada', 'USA', 'Mexico']"
 /&gt;</code></pre>
-      </div>
-    </div>
-    <div class="row mt-4 border-top justify-content-center">
-      <div class="col pt-4 pb-4">
-        <p class="small text-muted text-center">
-          Made by <a href="https://alexurquhart.com" target="_blank">Alex Urquhart</a>
-        </p>
       </div>
     </div>
     <!-- <div class="row">

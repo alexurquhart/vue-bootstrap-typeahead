@@ -24,7 +24,7 @@
   "main": "src/components/VueBootstrapTypeahead.vue",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib --name vue-bootstrap-typeahead src/components/VueBootstrapTypeahead.vue",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
