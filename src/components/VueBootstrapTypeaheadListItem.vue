@@ -3,7 +3,9 @@
     href="#"
     :class="textClasses"
   >
-    <slot></slot>
+    <slot name="suggestion" v-bind="{ data: data, htmlText: htmlText }">
+      <span v-html="htmlText"></span>
+    </slot>
   </a>
 </template>
 
@@ -12,6 +14,10 @@ export default {
   name: 'VueBootstrapTypeaheadListItem',
 
   props: {
+    data: {},
+    htmlText: {
+      type: String
+    },
     active: {
       type: Boolean
     },

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div :class="sizeClasses">
-      <div v-if="$slots.prepend || prepend" class="input-group-prepend">
+      <div ref="prependDiv" v-if="$slots.prepend || prepend" class="input-group-prepend">
         <slot name="prepend">
           <span class="input-group-text">{{ prepend }}</span>
         </slot>
@@ -37,7 +37,16 @@
       :text-variant="textVariant"
       :minMatchingChars="minMatchingChars"
       @hit="handleHit"
-    />
+    >
+      <!-- pass down all scoped slots -->
+      <template v-for="(slot, slotName) in $scopedSlots" :slot="slotName" slot-scope="{ data, htmlText }">
+        <slot :name="slotName" v-bind="{ data, htmlText }"></slot>
+      </template>
+      <!-- below is the right solution, however if the user does not provide a scoped slot, vue will still set $scopedSlots.suggestion to a blank scope
+      <template v-if="$scopedSlots.suggestion" slot="suggestion" slot-scope="{ data, htmlText }">
+        <slot name="suggestion" v-bind="{ data, htmlText }" />
+      </template>-->
+    </vue-bootstrap-typeahead-list>
   </div>
 </template>
 
@@ -110,8 +119,17 @@ export default {
   methods: {
     resizeList(el) {
       const rect = el.getBoundingClientRect()
-      // this.$refs.list.$el.style.top = rect.height + 5 + 'px'
-      this.$refs.list.$el.style.width = rect.width + 'px'
+      const listStyle = this.$refs.list.$el.style
+
+      // Set the width of the list on resize
+      listStyle.width = rect.width + 'px'
+
+      // Set the margin when the prepend prop or slot is populated
+      // (setting the "left" CSS property doesn't work)
+      if (this.$refs.prependDiv) {
+        const prependRect = this.$refs.prependDiv.getBoundingClientRect()
+        listStyle.marginLeft = prependRect.width + 'px'
+      }
     },
 
     handleHit(evt) {
