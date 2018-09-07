@@ -8,8 +8,16 @@ A simple `list-group` based typeahead/autocomplete using Bootstrap 4 and Vue 2
 
 ## Installation
 
+From NPM:
+
 ```
 > npm i vue-bootstrap-typeahead --save
+```
+
+Minified UMD and CommonJS builds are available in the 'dist' folder. The component is also available for use in the browser directly on unpkg:
+
+```html
+<script src="https://unpkg.com/vue-bootstrap-typeahead"></script>
 ```
 
 ## Usage
