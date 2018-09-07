@@ -6,3 +6,6 @@
 - Added library build + unpkg tags
 - Updated documentation site (working on gh-pages)
 - Added basic unit tests
+
+## 0.2.1 - 7 Sept 2018
+- Fixed positioning bug for the typeahead list when the prepend slot was used
