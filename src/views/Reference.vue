@@ -105,9 +105,14 @@
         <p>There are <code>prepend</code> and <code>append</code> slots available for adding buttons or other markup. Overrides the prepend and append props.</p>
 
         <h2>Scoped Slot</h2>
-        <p>You can use a <a href="https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots" target="_blank">scoped slot</a> called <code>suggestion</code> to define custom content
-for the suggestion <code>list-item</code>'s</p>
-<!-- TODO: Link examples for slots/scoped slots -->
+        <p>
+          You can use a <a href="https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots" target="_blank">scoped slot</a> called <code>suggestion</code>
+          to define custom content for the suggestion <code>list-item</code>'s. You can use bound variables <code>data</code>, which holds the data from the
+          input array, and <code>htmlText</code>, which is the highlighted text that is used for the suggestion.
+        </p>
+        <p>
+          See the <router-link to="examples/custom-suggestion-slot">custom suggestion slot example</router-link> for more info.
+        </p>
       </div>
     </div>
   </div>

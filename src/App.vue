@@ -6,8 +6,8 @@
       <b-collapse is-nav id="nav_dropdown_collapse">
         <b-navbar-nav>
           <b-nav-item to="/">Home</b-nav-item>
-          <b-nav-item to="reference">Reference</b-nav-item>
-          <b-nav-item to="examples">Examples</b-nav-item>
+          <b-nav-item to="/reference">Reference</b-nav-item>
+          <b-nav-item to="/examples">Examples</b-nav-item>
           <b-nav-item href="https://github.com/alexurquhart/vue-bootstrap-typeahead" target="_blank">GitHub</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
