@@ -10,7 +10,7 @@
     "bootstrap 4",
     "typeahead"
   ],
-  "homepage": "https://github.com/alexurquhart/vue-bootstrap-typeahead",
+  "homepage": "https://alexurquhart.github.io/vue-bootstrap-typeahead/",
   "repository": "github:alexurquhart/vue-bootstrap-typeahead",
   "bugs": {
     "url": "https://github.com/alexurquhart/vue-bootstrap-typeahead/issues"
