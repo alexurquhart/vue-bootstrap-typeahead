@@ -21,4 +21,10 @@ describe('VueBootstrapTypeaheadListItem.vue', () => {
     wrapper.setProps({backgroundVariant: 'light'})
     expect(wrapper.classes()).toEqual(expect.arrayContaining(['bg-light']))
   })
+
+  it('Renders active class properly', () => {
+    wrapper.setProps({active: true})
+    expect(wrapper.vm.active).toBe(true)
+    expect(wrapper.classes()).toEqual(expect.arrayContaining(['active']))
+  })
 })
