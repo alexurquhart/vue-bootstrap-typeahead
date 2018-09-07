@@ -51,7 +51,7 @@ export default {
     }
   },
   async mounted() {
-    const res = await fetch('/countries.json')
+    const res = await fetch('countries.json')
     this.countries = await res.json()
   }
 }
