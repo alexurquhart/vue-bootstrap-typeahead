@@ -19,22 +19,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <b-card class="shadow-sm" title="Demo Country Search">
-          <p class="card-text">
-            Type a country:
-          </p>
-          <vue-bootstrap-typeahead
-            :data="countries"
-            v-model="cntrySearch"
-            :serializer="s => s.name"
-            placeholder="Canada, United States, etc..."
-            @hit="selectedCountry = $event"
-          >
-            <template slot="suggestion" slot-scope="{ data, htmlText }">
-              <span v-html="htmlText"></span>&nbsp;<small>{{ data.code }}</small>
-            </template>
-          </vue-bootstrap-typeahead>
-        </b-card>
+        <country-search />
       </div>
     </div>
     <div class="row">
@@ -54,6 +39,9 @@
         <h2>Getting Started</h2>
         <p class="lead">Installation</p>
         <pre v-highlight><code class="bash">$ npm install vue-bootstrap-typeahead --save</code></pre>
+        <p class="lead">Minified UMD and CommonJS builds are available in the <code>dist</code> folder. The component is also available on unpkg.</p>
+        <pre v-highlight><code class="html">&lt;script src="https://unpkg.com/vue-bootstrap-typeahead"&gt;&lt;/script&gt;</code></pre>
+
         <p class="lead">Registration</p>
 <pre v-highlight>
 <code class="javascript">import VueBootstrapTypeahead from 'vue-bootstrap-typeahead'
@@ -113,49 +101,12 @@ export default {
 </template>
 
 <script>
-import _ from 'underscore'
-import VueBootstrapTypeahead from '../components/VueBootstrapTypeahead'
-
-const API_URL = 'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/suggest?f=json&maxSuggestions=5&text=:keyword'
+import CountrySearch from '../examples/CountrySearch'
 
 export default {
   name: 'Home',
   components: {
-    VueBootstrapTypeahead
-  },
-  data() {
-    return {
-      cntrySearch: '',
-      addressSearch: '',
-      countries: [],
-      selectedCountry: {},
-      addresses: [],
-      selectedAddress: {}
-    }
-  },
-  methods: {
-    handleHit(evt) {
-      this.selectedCountry = evt
-    },
-
-    async getAddresses(query) {
-      const res = await fetch(API_URL.replace(':keyword', query))
-      const suggestions = await res.json()
-      this.addresses = suggestions.suggestions
-    }
-  },
-
-  watch: {
-    addressSearch: _.debounce(function(addr) { this.getAddresses(addr) }, 500)
-  },
-
-  filters: {
-    stringify: t => JSON.stringify(t, null, 2)
-  },
-
-  async mounted() {
-    const res = await fetch('/countries.json')
-    this.countries = await res.json()
+    CountrySearch
   }
 }
 </script>
@@ -163,9 +114,5 @@ export default {
 <style scoped>
   .row {
     padding-top: 1rem;
-  }
-
-  .big {
-    height: 500px;
   }
 </style>

@@ -18,8 +18,31 @@ export default new Router({
     },
     {
       path: '/examples',
-      name: 'examples',
-      component: () => import(/* webpackChunkName: "examples" */ './views/Examples.vue')
+      component: () => import(/* webpackChunkName: "examples" */ './views/Examples.vue'),
+      children: [
+        {
+          name: 'examples',
+          path: '',
+          component: () => import(/* webpackChunkName: "examples" */ './examples/BasicExample.vue')
+        },
+        {
+          path: 'basic-example',
+          component: () => import(/* webpackChunkName: "examples" */ './examples/BasicExample.vue')
+        },
+        {
+          path: 'working-with-apis',
+          component: () => import(/* webpackChunkName: "examples" */ './examples/WorkingWithAPIs.vue')
+        },
+        {
+          path: 'prepending-and-appending',
+          component: () => import(/* webpackChunkName: "examples" */ './examples/PrependAppend.vue')
+        },
+        {
+          name: 'custom-suggestion-slot',
+          path: 'custom-suggestion-slot',
+          component: () => import(/* webpackChunkName: "examples" */ './examples/CustomSuggestion.vue')
+        }
+      ]
     }
   ]
 })
