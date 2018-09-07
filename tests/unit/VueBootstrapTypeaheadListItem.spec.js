@@ -21,19 +21,4 @@ describe('VueBootstrapTypeaheadListItem.vue', () => {
     wrapper.setProps({backgroundVariant: 'light'})
     expect(wrapper.classes()).toEqual(expect.arrayContaining(['bg-light']))
   })
-
-  it('Applies the active class on mouseOver', () => {
-    expect(wrapper.vm.active).toBe(false)
-    wrapper.trigger('mouseover')
-    expect(wrapper.vm.active).toBe(true)
-    expect(wrapper.classes()).toEqual(expect.arrayContaining(['active']))
-  })
-
-  it('Removes the active class on mouse out', () => {
-    wrapper.trigger('mouseover')
-    expect(wrapper.vm.active).toBe(true)
-    wrapper.trigger('mouseout')
-    expect(wrapper.vm.active).toBe(false)
-    expect(wrapper.classes()).toEqual(expect.not.arrayContaining(['active']))
-  })
 })
