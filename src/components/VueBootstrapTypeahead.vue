@@ -135,6 +135,8 @@ export default {
       if (typeof this.value !== 'undefined') {
         this.$emit('input', evt.text)
       }
+
+      this.inputValue = evt.text
       this.$emit('hit', evt.data)
       this.$refs.input.blur()
       this.isFocused = false

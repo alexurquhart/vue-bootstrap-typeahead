@@ -1,6 +1,6 @@
 {
   "name": "vue-bootstrap-typeahead",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "private": false,
   "description": "A typeahead/autocomplete component for Vue 2 using Bootstrap 4",
   "keywords": [
@@ -41,6 +41,7 @@
     "@vue/cli-service": "^3.0.0",
     "@vue/eslint-config-standard": "^3.0.1",
     "@vue/test-utils": "^1.0.0-beta.20",
+    "axios": "^0.18.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
     "bootstrap": "^4.1.3",

@@ -22,3 +22,7 @@
 
 ## 0.2.4 - 21 Sept 2018
 - Re-fixed error when `v-model` is not used on component (issue #18)
+
+## 0.2.5 - 21 Sept 2018
+- Re-fixed error when `v-model` is not used on component (issue #18)
+- More comprehensive unit testing is now a priority, edge cases are harder to find than I thought :joy:
