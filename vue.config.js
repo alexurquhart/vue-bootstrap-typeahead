@@ -1,3 +1,3 @@
 module.exports = {
-  baseUrl: 'vue-bootstrap-typeahead/'
+  baseUrl: process.env.NODE_ENV === 'production' ? 'vue-bootstrap-typeahead/' : '/'
 }
