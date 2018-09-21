@@ -12,7 +12,7 @@ describe('VueBootstrapTypeaheadList', () => {
     })
   })
 
-  it('Mounts and renders a div', () => {
+  it('Mounts and renders a list-group div', () => {
     expect(wrapper.is('div')).toBe(true)
     expect(wrapper.classes()).toContain('list-group')
   })
