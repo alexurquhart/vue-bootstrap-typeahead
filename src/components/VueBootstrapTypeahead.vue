@@ -12,10 +12,10 @@
         :class="`form-control ${inputClass}`"
         :placeholder="placeholder"
         :aria-label="placeholder"
-        :value="value"
+        :value="inputValue"
         @focus="isFocused = true"
         @blur="handleBlur"
-        @input="$emit('input', $event.target.value)"
+        @input="handleInput($event.target.value)"
         autocomplete="off"
       />
       <div v-if="$slots.append || append" class="input-group-append">
@@ -64,7 +64,9 @@ export default {
       default: null,
       validator: size => ['lg', 'sm'].indexOf(size) > -1
     },
-    value: String,
+    value: {
+      type: String
+    },
     data: {
       type: Array,
       required: true,
@@ -142,12 +144,22 @@ export default {
         return
       }
       this.isFocused = false
+    },
+
+    handleInput(newValue) {
+      this.inputValue = newValue
+
+      // If v-model is being used, emit an input event
+      if (typeof this.value !== 'undefined') {
+        this.$emit('input', newValue)
+      }
     }
   },
 
   data() {
     return {
-      isFocused: false
+      isFocused: false,
+      inputValue: ''
     }
   },
 

@@ -15,3 +15,7 @@
 - Added updated documentation. `docs` folder now to be published to gh-pages
 - Updated readme
 - Added `.npmignore`
+
+## 0.2.3 - 21 Sept 2018
+- Fixed Safari bug (issue #14)
+- Fixed error when `v-model` is not used on component (issue #18)

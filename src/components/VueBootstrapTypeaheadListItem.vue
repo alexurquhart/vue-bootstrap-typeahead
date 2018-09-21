@@ -1,5 +1,6 @@
 <template>
   <a
+    tabindex="0"
     href="#"
     :class="textClasses"
     @mouseover="active = true"
