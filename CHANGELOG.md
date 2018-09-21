@@ -19,3 +19,6 @@
 ## 0.2.3 - 21 Sept 2018
 - Fixed Safari bug (issue #14)
 - Fixed error when `v-model` is not used on component (issue #18)
+
+## 0.2.4 - 21 Sept 2018
+- Re-fixed error when `v-model` is not used on component (issue #18)
