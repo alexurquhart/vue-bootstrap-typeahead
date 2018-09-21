@@ -2,6 +2,10 @@
 
 [![NPM](https://nodei.co/npm/vue-bootstrap-typeahead.png)](https://www.npmjs.com/package/vue-bootstrap-typeahead)
 
+[![Build Status](https://travis-ci.org/alexurquhart/vue-bootstrap-typeahead.svg?branch=master)](https://travis-ci.org/alexurquhart/vue-bootstrap-typeahead)
+[![npm](https://img.shields.io/npm/dm/vue-bootstrap-typeahead.svg)](https://www.npmjs.com/package/vue-bootstrap-typeahead)
+[![GitHub license](https://img.shields.io/github/license/alexurquhart/vue-bootstrap-typeahead.svg)](https://github.com/alexurquhart/vue-bootstrap-typeahead/blob/master/LICENSE.txt)
+
 A simple `list-group` based typeahead/autocomplete using Bootstrap 4 and Vue 2
 
 <img src="https://raw.githubusercontent.com/alexurquhart/vue-bootstrap-typeahead/master/assets/screenshot.png" alt="Preview image of the vue-bootstrap-typeahead component">
