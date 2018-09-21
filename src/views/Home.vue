@@ -40,7 +40,9 @@
         <p class="lead">Installation</p>
         <pre v-highlight><code class="bash">$ npm install vue-bootstrap-typeahead --save</code></pre>
         <p class="lead">Minified UMD and CommonJS builds are available in the <code>dist</code> folder. The component is also available on unpkg.</p>
-        <pre v-highlight><code class="html">&lt;script src="https://unpkg.com/vue-bootstrap-typeahead"&gt;&lt;/script&gt;</code></pre>
+        <pre v-highlight><code class="html">
+&lt;link href="https://unpkg.com/vue-bootstrap-typeahead/dist/VueBootstrapTypeahead.css" rel="stylesheet"&gt;
+&lt;script src="https://unpkg.com/vue-bootstrap-typeahead"&gt;&lt;/script&gt;</code></pre>
 
         <p class="lead">Registration</p>
 <pre v-highlight>
