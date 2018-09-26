@@ -28,7 +28,7 @@
     "build": "vue-cli-service build --target lib --name VueBootstrapTypeahead src/components/VueBootstrapTypeahead.vue",
     "build:docs": "vue-cli-service build --dest docs",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit --coverage"
   },
   "dependencies": {
     "resize-observer-polyfill": "^1.5.0",
@@ -45,6 +45,7 @@
     "babel-jest": "^23.0.1",
     "bootstrap": "^4.1.3",
     "bootstrap-vue": "^2.0.0-rc.11",
+    "coveralls": "^3.0.2",
     "highlight.js": "^9.12.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
