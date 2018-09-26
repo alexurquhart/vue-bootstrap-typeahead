@@ -28,7 +28,7 @@
       class="vbt-autcomplete-list"
       ref="list"
       v-show="isFocused && data.length > 0"
-      :query="value"
+      :query="inputValue"
       :data="formattedData"
       :background-variant="backgroundVariant"
       :text-variant="textVariant"
@@ -132,7 +132,11 @@ export default {
     },
 
     handleHit(evt) {
-      this.$emit('input', evt.text)
+      if (typeof this.value !== 'undefined') {
+        this.$emit('input', evt.text)
+      }
+
+      this.inputValue = evt.text
       this.$emit('hit', evt.data)
       this.$refs.input.blur()
       this.isFocused = false
