@@ -32,6 +32,7 @@
       :data="formattedData"
       :background-variant="backgroundVariant"
       :text-variant="textVariant"
+      :maxMatches="maxMatches"
       :minMatchingChars="minMatchingChars"
       @hit="handleHit"
     >
