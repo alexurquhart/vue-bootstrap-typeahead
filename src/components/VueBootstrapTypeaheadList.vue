@@ -20,15 +20,15 @@
 import VueBootstrapTypeaheadListItem from './VueBootstrapTypeaheadListItem.vue'
 
 function sanitize(text) {
-  return text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return text.replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 
 function escapeRegExp(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
 
 export default {
-  name: "VueBootstrapTypeaheadList",
+  name: 'VueBootstrapTypeaheadList',
 
   components: {
     VueBootstrapTypeaheadListItem
@@ -42,7 +42,7 @@ export default {
     },
     query: {
       type: String,
-      default: ""
+      default: ''
     },
     backgroundVariant: {
       type: String
@@ -61,33 +61,33 @@ export default {
   },
 
   created() {
-    this.$parent.$on("input", this.resetActiveListItem);
-    this.$parent.$on("keyup.down", this.selectNextListItem);
-    this.$parent.$on("keyup.up", this.selectPreviousListItem);
-    this.$parent.$on("keyup.enter", this.hitActiveListItem);
+    this.$parent.$on('input', this.resetActiveListItem)
+    this.$parent.$on('keyup.down', this.selectNextListItem)
+    this.$parent.$on('keyup.up', this.selectPreviousListItem)
+    this.$parent.$on('keyup.enter', this.hitActiveListItem)
   },
 
   data() {
     return {
       activeListItem: -1
-    };
+    }
   },
 
   computed: {
     highlight() {
       return text => {
-        text = sanitize(text);
+        text = sanitize(text)
         if (this.query.length === 0) {
-          return text;
+          return text
         }
-        const re = new RegExp(this.escapedQuery, "gi");
+        const re = new RegExp(this.escapedQuery, 'gi')
 
-        return text.replace(re, `<strong>$&</strong>`);
-      };
+        return text.replace(re, `<strong>$&</strong>`)
+      }
     },
 
     escapedQuery() {
-      return escapeRegExp(sanitize(this.query));
+      return escapeRegExp(sanitize(this.query))
     },
 
     matchedItems() {
@@ -95,63 +95,63 @@ export default {
         this.query.length === 0 ||
         this.query.length < this.minMatchingChars
       ) {
-        return [];
+        return []
       }
 
-      const re = new RegExp(this.escapedQuery, "gi");
+      const re = new RegExp(this.escapedQuery, 'gi')
 
       // Filter, sort, and concat
       return this.data
         .filter(i => i.text.match(re) !== null)
         .sort((a, b) => {
-          const aIndex = a.text.indexOf(a.text.match(re)[0]);
-          const bIndex = b.text.indexOf(b.text.match(re)[0]);
+          const aIndex = a.text.indexOf(a.text.match(re)[0])
+          const bIndex = b.text.indexOf(b.text.match(re)[0])
 
           if (aIndex < bIndex) {
-            return -1;
+            return -1
           }
           if (aIndex > bIndex) {
-            return 1;
+            return 1
           }
-          return 0;
+          return 0
         })
-        .slice(0, this.maxMatches);
+        .slice(0, this.maxMatches)
     }
   },
 
   methods: {
     handleHit(item, evt) {
-      this.$emit("hit", item);
-      evt.preventDefault();
+      this.$emit('hit', item)
+      evt.preventDefault()
     },
 
     hitActiveListItem() {
       if (this.activeListItem >= 0) {
-        this.$emit("hit", this.matchedItems[this.activeListItem]);
+        this.$emit('hit', this.matchedItems[this.activeListItem])
       }
     },
 
     isListItemActive(id) {
-      return this.activeListItem === id;
+      return this.activeListItem === id
     },
 
     resetActiveListItem() {
-      this.activeListItem = -1;
+      this.activeListItem = -1
     },
 
     selectNextListItem() {
       if (this.activeListItem < this.matchedItems.length - 1) {
-        this.activeListItem++;
+        this.activeListItem++
       } else {
-        this.activeListItem = -1;
+        this.activeListItem = -1
       }
     },
 
     selectPreviousListItem() {
       if (this.activeListItem < 0) {
-        this.activeListItem = this.matchedItems.length - 1;
+        this.activeListItem = this.matchedItems.length - 1
       } else {
-        this.activeListItem--;
+        this.activeListItem--
       }
     }
   },
@@ -159,20 +159,20 @@ export default {
   watch: {
     activeListItem(newValue, oldValue) {
       if (newValue >= 0) {
-        const scrollContainer = this.$refs.suggestionList;
-        const listItem = scrollContainer.children[this.activeListItem];
-        const scrollContainerlHeight = scrollContainer.clientHeight;
-        const listItemHeight = listItem.clientHeight;
+        const scrollContainer = this.$refs.suggestionList
+        const listItem = scrollContainer.children[this.activeListItem]
+        const scrollContainerlHeight = scrollContainer.clientHeight
+        const listItemHeight = listItem.clientHeight
         const visibleItems = Math.floor(
           scrollContainerlHeight / listItemHeight
-        );
+        )
         if (newValue >= visibleItems) {
-          scrollContainer.scrollTop = listItemHeight * this.activeListItem;
+          scrollContainer.scrollTop = listItemHeight * this.activeListItem
         } else {
-          scrollContainer.scrollTop = 0;
+          scrollContainer.scrollTop = 0
         }
       }
     }
   }
-};
+}
 </script>
