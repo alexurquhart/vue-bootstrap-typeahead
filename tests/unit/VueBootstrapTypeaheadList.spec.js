@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import {mount} from '@vue/test-utils'
 import VueBootstrapTypeaheadList from '@/components/VueBootstrapTypeaheadList.vue'
 import VueBootstrapTypeaheadListItem from '@/components/VueBootstrapTypeaheadListItem.vue'
 
@@ -80,4 +80,69 @@ describe('VueBootstrapTypeaheadList', () => {
     })
     expect(wrapper.find(VueBootstrapTypeaheadListItem).vm.htmlText).toBe('<strong>Canada</strong>')
   })
+  it('Resets the active list item', () => {
+    wrapper.setProps({
+      query: 'Can'
+    })
+    wrapper.vm.$parent.$emit('keyup.down')
+    wrapper.vm.resetActiveListItem()
+    expect(wrapper.vm.activeListItem).toBe(-1)
+  })
+
+  it('Selects next list item on keyup.down', () => {
+    wrapper.setProps({
+      query: 'Can'
+    })
+    wrapper.vm.$parent.$emit('keyup.down')
+    expect(wrapper.vm.activeListItem).toBe(0)
+  })
+
+  it('Wraps back to input on keyup.down at bottom of list', () => {
+    wrapper.setProps({
+      query: 'Canada'
+    })
+    wrapper.vm.$parent.$emit('keyup.down')
+    wrapper.vm.$parent.$emit('keyup.down')
+    expect(wrapper.vm.activeListItem).toBe(-1)
+  })
+
+  it('Selects previous list item on keyup.up', () => {
+    wrapper.setProps({
+      query: 'Can'
+    })
+    wrapper.vm.$parent.$emit('keyup.up')
+    expect(wrapper.vm.activeListItem).toBe(wrapper.vm.matchedItems.length - 1)
+  })
+
+  it('Selects input on keyup.up at when at top of the list', () => {
+    wrapper.setProps({
+      query: 'Can'
+    })
+    wrapper.vm.$parent.$emit('keyup.down')
+    wrapper.vm.$parent.$emit('keyup.up')
+    expect(wrapper.vm.activeListItem).toBe(-1)
+  })
+
+  it('Hits active item on keyup.enter', () => {
+    wrapper.setProps({
+      query: 'Can'
+    })
+    wrapper.vm.$parent.$emit('keyup.down') // advance active Item
+
+    wrapper.vm.$on('hit', (hitItem) => {
+      expect(hitItem).toBe(wrapper.vm.matchedItems[0])
+    })
+
+    wrapper.vm.$parent.$emit('keyup.enter')
+  })
+
+  it('Indicates list item is active or inactive', () => {
+    wrapper.setProps({
+      query: 'Can'
+    })
+    wrapper.vm.$parent.$emit('keyup.down')
+    expect(wrapper.vm.isListItemActive(0)).toBeTruthy()
+    expect(wrapper.vm.isListItemActive(1)).toBeFalsy()
+  })
 })
+
