@@ -161,10 +161,16 @@ export default {
     }
   },
 
+  watch: {
+    'value' (newValue) {
+      this.inputValue = newValue
+    }
+  },
+
   data() {
     return {
       isFocused: false,
-      inputValue: ''
+      inputValue: this.value
     }
   },
 

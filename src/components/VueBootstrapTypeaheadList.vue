@@ -41,7 +41,7 @@ export default {
     },
     query: {
       type: String,
-      default: ''
+      default: null
     },
     backgroundVariant: {
       type: String
@@ -63,7 +63,7 @@ export default {
     highlight() {
       return (text) => {
         text = sanitize(text)
-        if (this.query.length === 0) {
+        if (this.query && this.query.length === 0) {
           return text
         }
         const re = new RegExp(this.escapedQuery, 'gi')
@@ -77,7 +77,7 @@ export default {
     },
 
     matchedItems() {
-      if (this.query.length === 0 || this.query.length < this.minMatchingChars) {
+      if (this.query && (this.query.length === 0 || this.query.length < this.minMatchingChars)) {
         return []
       }
 
