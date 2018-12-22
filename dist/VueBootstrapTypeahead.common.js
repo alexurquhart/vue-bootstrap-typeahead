@@ -2552,15 +2552,15 @@ var staticRenderFns = []
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
 var es6_number_constructor = __webpack_require__("c5f6");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"ca0e2238-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueBootstrapTypeaheadList.vue?vue&type=template&id=85a844f6&
-var VueBootstrapTypeaheadListvue_type_template_id_85a844f6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"list-group shadow"},_vm._l((_vm.matchedItems),function(item,id){return _c('vue-bootstrap-typeahead-list-item',{key:id,attrs:{"data":item.data,"html-text":_vm.highlight(item.text),"background-variant":_vm.backgroundVariant,"text-variant":_vm.textVariant},nativeOn:{"click":function($event){_vm.handleHit(item, $event)}},scopedSlots:_vm._u([{key:"suggestion",fn:function(ref){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"ca0e2238-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueBootstrapTypeaheadList.vue?vue&type=template&id=52bdbcc2&
+var VueBootstrapTypeaheadListvue_type_template_id_52bdbcc2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"list-group shadow"},_vm._l((_vm.matchedItems),function(item,id){return _c('vue-bootstrap-typeahead-list-item',{key:id,attrs:{"data":item.data,"html-text":_vm.highlight(item.text),"background-variant":_vm.backgroundVariant,"text-variant":_vm.textVariant},nativeOn:{"click":function($event){_vm.handleHit(item, $event)}},scopedSlots:_vm._u([{key:"suggestion",fn:function(ref){
 var data = ref.data;
 var htmlText = ref.htmlText;
 return (_vm.$scopedSlots.suggestion)?[_vm._t("suggestion",null,null,{ data: data, htmlText: htmlText })]:undefined}}])})}),1)}
-var VueBootstrapTypeaheadListvue_type_template_id_85a844f6_staticRenderFns = []
+var VueBootstrapTypeaheadListvue_type_template_id_52bdbcc2_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VueBootstrapTypeaheadList.vue?vue&type=template&id=85a844f6&
+// CONCATENATED MODULE: ./src/components/VueBootstrapTypeaheadList.vue?vue&type=template&id=52bdbcc2&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.match.js
 var es6_regexp_match = __webpack_require__("4917");
@@ -2769,11 +2769,11 @@ component.options.__file = "VueBootstrapTypeaheadListItem.vue"
 
 
 function sanitize(text) {
-  return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return text ? text.replace(/</g, '&lt;').replace(/>/g, '&gt;') : null;
 }
 
 function escapeRegExp(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return str ? str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') : null;
 }
 
 /* harmony default export */ var VueBootstrapTypeaheadListvue_type_script_lang_js_ = ({
@@ -2820,7 +2820,7 @@ function escapeRegExp(str) {
         }
 
         var re = new RegExp(_this.escapedQuery, 'gi');
-        return text.replace(re, "<strong>$&</strong>");
+        return text ? text.replace(re, "<strong>$&</strong>") : null;
       };
     },
     escapedQuery: function escapedQuery() {
@@ -2870,8 +2870,8 @@ function escapeRegExp(str) {
 
 var VueBootstrapTypeaheadList_component = normalizeComponent(
   components_VueBootstrapTypeaheadListvue_type_script_lang_js_,
-  VueBootstrapTypeaheadListvue_type_template_id_85a844f6_render,
-  VueBootstrapTypeaheadListvue_type_template_id_85a844f6_staticRenderFns,
+  VueBootstrapTypeaheadListvue_type_template_id_52bdbcc2_render,
+  VueBootstrapTypeaheadListvue_type_template_id_52bdbcc2_staticRenderFns,
   false,
   null,
   null,

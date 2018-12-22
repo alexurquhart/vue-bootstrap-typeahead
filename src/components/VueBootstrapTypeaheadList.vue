@@ -19,11 +19,11 @@
 import VueBootstrapTypeaheadListItem from './VueBootstrapTypeaheadListItem.vue'
 
 function sanitize(text) {
-  return text.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  return text ? text.replace(/</g, '&lt;').replace(/>/g, '&gt;') : null
 }
 
 function escapeRegExp(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return str ? str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') : null
 }
 
 export default {
@@ -68,7 +68,7 @@ export default {
         }
         const re = new RegExp(this.escapedQuery, 'gi')
 
-        return text.replace(re, `<strong>$&</strong>`)
+        return text ? text.replace(re, `<strong>$&</strong>`) : null
       }
     },
 
