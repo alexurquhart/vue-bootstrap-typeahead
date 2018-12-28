@@ -25,7 +25,7 @@
       </div>
     </div>
     <vue-bootstrap-typeahead-list
-      class="vbt-autcomplete-list"
+      class="vbt-autocomplete-list"
       ref="list"
       v-show="isFocused && data.length > 0"
       :query="inputValue"
@@ -189,7 +189,7 @@ export default {
 </script>
 
 <style scoped>
-  .vbt-autcomplete-list {
+  .vbt-autocomplete-list {
     padding-top: 5px;
     position: absolute;
     max-height: 350px;
