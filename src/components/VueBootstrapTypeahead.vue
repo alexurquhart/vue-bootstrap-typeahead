@@ -196,4 +196,8 @@ export default {
     overflow-y: auto;
     z-index: 999;
   }
+
+  .vbt-highlighted {
+    font-weight: bold;
+  }
 </style>

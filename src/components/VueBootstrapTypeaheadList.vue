@@ -68,7 +68,7 @@ export default {
         }
         const re = new RegExp(this.escapedQuery, 'gi')
 
-        return text ? text.replace(re, `<strong>$&</strong>`) : null
+        return text ? text.replace(re, `<span class="vbt-highlighted">$&</span>`) : null
       }
     },
 
