@@ -105,3 +105,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .vbt-highlighted {
+    font-weight: bold;
+  }
+</style>
