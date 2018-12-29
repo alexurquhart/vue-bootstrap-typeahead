@@ -53,7 +53,7 @@ import VueBootstrapTypeaheadList from './VueBootstrapTypeaheadList.vue'
 import ResizeObserver from 'resize-observer-polyfill'
 
 export default {
-  name: 'VueBootstrapTypehead',
+  name: 'VueBootstrapTypeahead',
 
   components: {
     VueBootstrapTypeaheadList
