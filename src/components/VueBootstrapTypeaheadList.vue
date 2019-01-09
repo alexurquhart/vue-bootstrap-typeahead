@@ -85,7 +85,7 @@ export default {
 
       // Filter, sort, and concat
       return this.data
-        .filter(i => i.text.match(re) !== null)
+        .filter(i => i.text.match ? i.text.match(re) !== null : false)
         .sort((a, b) => {
           const aIndex = a.text.indexOf(a.text.match(re)[0])
           const bIndex = b.text.indexOf(b.text.match(re)[0])
