@@ -28,10 +28,11 @@
       class="vbt-autcomplete-list"
       ref="list"
       v-show="isFocused && data.length > 0"
-      :query="value"
+      :query="inputValue"
       :data="formattedData"
       :background-variant="backgroundVariant"
       :text-variant="textVariant"
+      :maxMatches="maxMatches"
       :minMatchingChars="minMatchingChars"
       @hit="handleHit"
     >
@@ -112,6 +113,13 @@ export default {
           text: this.serializer(d)
         }
       })
+    },
+
+    inputValue() {
+      if (typeof this.value !== 'undefined') {
+        return this.value
+      }
+      return this.noModelValue
     }
   },
 
@@ -132,7 +140,11 @@ export default {
     },
 
     handleHit(evt) {
-      this.$emit('input', evt.text)
+      if (typeof this.value !== 'undefined') {
+        this.$emit('input', evt.text)
+      }
+
+      this.noModelValue = evt.text
       this.$emit('hit', evt.data)
       this.$refs.input.blur()
       this.isFocused = false
@@ -147,7 +159,7 @@ export default {
     },
 
     handleInput(newValue) {
-      this.inputValue = newValue
+      this.noModelValue = newValue
 
       // If v-model is being used, emit an input event
       if (typeof this.value !== 'undefined') {
@@ -159,7 +171,7 @@ export default {
   data() {
     return {
       isFocused: false,
-      inputValue: ''
+      noModelValue: ''
     }
   },
 

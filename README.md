@@ -2,6 +2,11 @@
 
 [![NPM](https://nodei.co/npm/vue-bootstrap-typeahead.png)](https://www.npmjs.com/package/vue-bootstrap-typeahead)
 
+[![Build Status](https://travis-ci.org/alexurquhart/vue-bootstrap-typeahead.svg?branch=master)](https://travis-ci.org/alexurquhart/vue-bootstrap-typeahead)
+[![Coverage Status](https://coveralls.io/repos/github/alexurquhart/vue-bootstrap-typeahead/badge.svg?branch=master)](https://coveralls.io/github/alexurquhart/vue-bootstrap-typeahead?branch=master)
+[![npm](https://img.shields.io/npm/dm/vue-bootstrap-typeahead.svg)](https://www.npmjs.com/package/vue-bootstrap-typeahead)
+[![GitHub license](https://img.shields.io/github/license/alexurquhart/vue-bootstrap-typeahead.svg)](https://github.com/alexurquhart/vue-bootstrap-typeahead/blob/master/LICENSE.txt)
+
 A simple `list-group` based typeahead/autocomplete using Bootstrap 4 and Vue 2
 
 <img src="https://raw.githubusercontent.com/alexurquhart/vue-bootstrap-typeahead/master/assets/screenshot.png" alt="Preview image of the vue-bootstrap-typeahead component">
@@ -19,6 +24,7 @@ From NPM:
 Minified UMD and CommonJS builds are available in the 'dist' folder. The component is also available for use in the browser directly on unpkg:
 
 ```html
+<link href="https://unpkg.com/vue-bootstrap-typeahead/dist/VueBootstrapTypeahead.css" rel="stylesheet">
 <script src="https://unpkg.com/vue-bootstrap-typeahead"></script>
 ```
 
@@ -150,6 +156,10 @@ for the suggestion `list-item`'s
 Clone this repository and run `npm run serve` and navigate to http://localhost:8080 to launch the documentation. The source is in `src/views/Home.vue`
 
 You can also view and edit examples hosted on CodePen [here](https://alexurquhart.github.io/vue-bootstrap-typeahead/#/examples)
+
+## Contributing
+
+Please note that active development is done on the `Development` branch. PR's are welcome!
 
 ## Contributing
 
