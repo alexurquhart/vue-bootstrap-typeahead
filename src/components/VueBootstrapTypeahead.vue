@@ -25,7 +25,7 @@
       </div>
     </div>
     <vue-bootstrap-typeahead-list
-      class="vbt-autcomplete-list"
+      class="vbt-autocomplete-list"
       ref="list"
       v-show="isFocused && data.length > 0"
       :query="inputValue"
@@ -53,7 +53,7 @@ import VueBootstrapTypeaheadList from './VueBootstrapTypeaheadList.vue'
 import ResizeObserver from 'resize-observer-polyfill'
 
 export default {
-  name: 'VueBootstrapTypehead',
+  name: 'VueBootstrapTypeahead',
 
   components: {
     VueBootstrapTypeaheadList
@@ -161,10 +161,16 @@ export default {
     }
   },
 
+  watch: {
+    'value' (newValue) {
+      this.inputValue = newValue
+    }
+  },
+
   data() {
     return {
       isFocused: false,
-      inputValue: ''
+      inputValue: this.value
     }
   },
 
@@ -183,7 +189,7 @@ export default {
 </script>
 
 <style scoped>
-  .vbt-autcomplete-list {
+  .vbt-autocomplete-list {
     padding-top: 5px;
     position: absolute;
     max-height: 350px;

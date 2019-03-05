@@ -19,11 +19,11 @@
 import VueBootstrapTypeaheadListItem from './VueBootstrapTypeaheadListItem.vue'
 
 function sanitize(text) {
-  return text.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  return text ? text.replace(/</g, '&lt;').replace(/>/g, '&gt;') : null
 }
 
 function escapeRegExp(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return str ? str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') : null
 }
 
 export default {
@@ -41,7 +41,7 @@ export default {
     },
     query: {
       type: String,
-      default: ''
+      default: null
     },
     backgroundVariant: {
       type: String
@@ -63,12 +63,12 @@ export default {
     highlight() {
       return (text) => {
         text = sanitize(text)
-        if (this.query.length === 0) {
+        if (this.query && this.query.length === 0) {
           return text
         }
         const re = new RegExp(this.escapedQuery, 'gi')
 
-        return text.replace(re, `<strong>$&</strong>`)
+        return text ? text.replace(re, `<span class="vbt-highlighted">$&</span>`) : null
       }
     },
 
@@ -78,9 +78,9 @@ export default {
 
     matchedItems() {
       // If no query, but minMatchingChars is 0: return trimmed data. filter and sort are not applicable as there is no query string.
-      if (this.query.length === 0 && this.minMatchingChars === 0) return this.data.slice(0, this.maxMatches)
+      if (typeof this.query === 'string' && this.query.length === 0 && this.minMatchingChars === 0) return this.data.slice(0, this.maxMatches)
 
-      if (this.query.length === 0 || this.query.length < this.minMatchingChars) {
+      if (this.query && (this.query.length === 0 || this.query.length < this.minMatchingChars)) {
         return []
       }
 
@@ -88,7 +88,7 @@ export default {
 
       // Filter, sort, and concat
       return this.data
-        .filter(i => i.text.match(re) !== null)
+        .filter(i => i.text.match ? i.text.match(re) !== null : false)
         .sort((a, b) => {
           const aIndex = a.text.indexOf(a.text.match(re)[0])
           const bIndex = b.text.indexOf(b.text.match(re)[0])
@@ -108,3 +108,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .vbt-highlighted {
+    font-weight: bold;
+  }
+</style>
