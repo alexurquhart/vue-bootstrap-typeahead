@@ -66,7 +66,8 @@ export default {
       validator: size => ['lg', 'sm'].indexOf(size) > -1
     },
     value: {
-      type: String
+      type: String,
+      default: ''
     },
     data: {
       type: Array,
