@@ -26,6 +26,10 @@ export default {
     },
     textVariant: {
       type: String
+    },
+    selected: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -37,12 +41,21 @@ export default {
 
   computed: {
     textClasses() {
-      let classes = ''
-      classes += this.active ? 'active' : ''
-      classes += this.backgroundVariant ? ` bg-${this.backgroundVariant}` : ''
-      classes += this.textVariant ? ` text-${this.textVariant}` : ''
-      return `vbst-item list-group-item list-group-item-action ${classes}`
+      let classes = []
+      if (this.active || this.selected) {
+        classes.push('active')
+      }
+      if (this.backgroundVariant) {
+        classes.push(`bg-${this.backgroundVariant}`)
+      }
+      if (this.textVariant) {
+        classes.push(`bg-${this.textVariant}`)
+      }
+      return `vbst-item list-group-item list-group-item-action ` + classes.join(' ')
     }
   }
 }
 </script>
+
+<style scoped>
+</style>

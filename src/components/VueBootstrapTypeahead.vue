@@ -16,6 +16,7 @@
         @focus="isFocused = true"
         @blur="handleBlur"
         @input="handleInput($event.target.value)"
+        @keydown="handleKeyDown"
         autocomplete="off"
       />
       <div v-if="$slots.append || append" class="input-group-append">
@@ -35,6 +36,7 @@
       :maxMatches="maxMatches"
       :minMatchingChars="minMatchingChars"
       @hit="handleHit"
+      @select="handleSelect"
     >
       <!-- pass down all scoped slots -->
       <template v-for="(slot, slotName) in $scopedSlots" :slot="slotName" slot-scope="{ data, htmlText }">
@@ -132,15 +134,19 @@ export default {
       }
     },
 
-    handleHit(evt) {
+    handleHit(item) {
       if (typeof this.value !== 'undefined') {
-        this.$emit('input', evt.text)
+        this.$emit('input', item.text)
       }
 
-      this.inputValue = evt.text
-      this.$emit('hit', evt.data)
+      this.inputValue = item.text
+      this.$emit('hit', item.data)
       this.$refs.input.blur()
       this.isFocused = false
+    },
+
+    handleSelect(item) {
+      this.handleHit(item)
     },
 
     handleBlur(evt) {
@@ -157,6 +163,22 @@ export default {
       // If v-model is being used, emit an input event
       if (typeof this.value !== 'undefined') {
         this.$emit('input', newValue)
+      }
+    },
+
+    handleKeyDown(event) {
+      if (event.which === 40) {
+        // down arrow
+        event.preventDefault()
+        this.$refs.list.keyArrowDown()
+      } else if (event.which === 38) {
+        // up arrow
+        event.preventDefault()
+        this.$refs.list.keyArrowUp()
+      } else if (event.which === 13) {
+        // enter
+        event.preventDefault()
+        this.$refs.list.keyEnter()
       }
     }
   },

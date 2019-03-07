@@ -6,6 +6,7 @@
       :html-text="highlight(item.text)"
       :background-variant="backgroundVariant"
       :text-variant="textVariant"
+      :selected="id == selectedId"
       @click.native="handleHit(item, $event)"
     >
       <template v-if="$scopedSlots.suggestion" slot="suggestion" slot-scope="{ data, htmlText }">
@@ -28,6 +29,12 @@ function escapeRegExp(str) {
 
 export default {
   name: 'VueBootstrapTypeaheadList',
+
+  data() {
+    return {
+      selectedItemIndex: 0
+    }
+  },
 
   components: {
     VueBootstrapTypeaheadListItem
@@ -94,13 +101,36 @@ export default {
           if (aIndex > bIndex) { return 1 }
           return 0
         }).slice(0, this.maxMatches)
+    },
+
+    selectedId() {
+      return this.data[this.selectedItemIndex].id
     }
   },
 
   methods: {
     handleHit(item, evt) {
-      this.$emit('hit', item)
       evt.preventDefault()
+      this.selectedItemIndex = 0;
+      this.$emit('hit', item)
+    },
+
+    keyArrowDown() {
+      if (this.selectedItemIndex < this.matchedItems.length - 1) {
+        this.selectedItemIndex++
+      }
+    },
+
+    keyArrowUp() {
+      if (this.selectedItemIndex > 0) {
+        this.selectedItemIndex--
+      }
+    },
+
+    keyEnter(event) {
+      let item = this.matchedItems[this.selectedItemIndex]
+      this.selectedItemIndex = 0;
+      this.$emit('select', item)
     }
   }
 }
