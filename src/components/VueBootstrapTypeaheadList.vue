@@ -111,7 +111,7 @@ export default {
   methods: {
     handleHit(item, evt) {
       evt.preventDefault()
-      this.selectedItemIndex = 0;
+      this.selectedItemIndex = 0
       this.$emit('hit', item)
     },
 
@@ -129,7 +129,7 @@ export default {
 
     keyEnter(event) {
       let item = this.matchedItems[this.selectedItemIndex]
-      this.selectedItemIndex = 0;
+      this.selectedItemIndex = 0
       this.$emit('select', item)
     }
   }
