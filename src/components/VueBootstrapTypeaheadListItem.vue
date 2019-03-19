@@ -5,6 +5,7 @@
     :class="textClasses"
     @mouseover="active = true"
     @mouseout="active = false"
+    @keydown="$listeners.keydown"
   >
     <slot name="suggestion" v-bind="{ data: data, htmlText: htmlText }">
       <span v-html="htmlText"></span>
