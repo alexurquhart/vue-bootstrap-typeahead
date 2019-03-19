@@ -138,7 +138,13 @@ export default {
 
     setActiveItem(idx) {
       this.$children.forEach((item, i) => {
-        item.active = (i === idx)
+        if (i === idx) {
+          item.active = true
+          item.$el.scrollIntoView(false)
+        }
+        else {
+          item.active = false
+        }
       })
     },
 
