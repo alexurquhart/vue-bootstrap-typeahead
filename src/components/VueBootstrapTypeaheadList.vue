@@ -56,7 +56,11 @@ export default {
     minMatchingChars: {
       type: Number,
       default: 2
+    },
+    showAll: {
+      type: Boolean
     }
+
   },
 
   computed: {
@@ -81,7 +85,7 @@ export default {
         return []
       }
 
-      const re = new RegExp(this.escapedQuery, 'gi')
+      const re = new RegExp(this.showAll ? "" : this.escapedQuery, "gi");
 
       // Filter, sort, and concat
       return this.data
