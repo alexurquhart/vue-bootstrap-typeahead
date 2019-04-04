@@ -85,7 +85,7 @@ export default {
         return []
       }
 
-      const re = new RegExp(this.showall ? "" : this.escapedQuery, "gi");
+      const re = new RegExp(this.showAll ? "" : this.escapedQuery, "gi");
 
       // Filter, sort, and concat
       return this.data
