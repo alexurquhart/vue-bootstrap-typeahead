@@ -9,6 +9,7 @@
       :serializer="s => s.name"
       placeholder="Canada, United States, etc..."
       @hit="handleHit"
+      :minMatchingChars=0
     >
       <template slot="append">
         <b-btn @click="search" variant="success">
