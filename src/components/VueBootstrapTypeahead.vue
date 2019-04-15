@@ -16,6 +16,7 @@
         @focus="isFocused = true"
         @blur="handleBlur"
         @input="handleInput($event.target.value)"
+        @keyup="keyUp"
         autocomplete="off"
       />
       <div v-if="$slots.append || append" class="input-group-append">
@@ -158,6 +159,15 @@ export default {
       if (typeof this.value !== 'undefined') {
         this.$emit('input', newValue)
       }
+    },
+
+    keyUp(evt) {
+      this.$emit('keyup', evt)
+    },
+
+    setFocus() {
+      this.$refs.input.focus();
+      this.isFocused = true;
     }
   },
 

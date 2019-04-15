@@ -78,7 +78,8 @@ export default {
 
     matchedItems() {
       // If no query, but minMatchingChars is 0: return trimmed data. filter and sort are not applicable as there is no query string.
-      if (typeof this.query === 'string' && this.query.length === 0 && this.minMatchingChars === 0) return this.data.slice(0, this.maxMatches)
+      // simple falsey check should cover 0 length string, null, undefined.
+      if (this.minMatchingChars === 0 && !this.query) return this.data.slice(0, this.maxMatches)
 
       if (this.query && (this.query.length === 0 || this.query.length < this.minMatchingChars)) {
         return []
