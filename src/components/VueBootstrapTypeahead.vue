@@ -13,6 +13,7 @@
         :placeholder="placeholder"
         :aria-label="placeholder"
         :value="inputValue"
+        :required="required"
         @focus="isFocused = true"
         @blur="handleBlur"
         @input="handleInput($event.target.value)"
@@ -91,6 +92,10 @@ export default {
     minMatchingChars: {
       type: Number,
       default: 2
+    },
+    required: {
+      type: Boolean,
+      default: false
     },
     placeholder: String,
     prepend: String,
