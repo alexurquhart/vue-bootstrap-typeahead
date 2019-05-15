@@ -145,9 +145,10 @@ for the suggestion `list-item`'s
 >
   <!-- htmlText is bound to the matched text derived from the serializer function -->
   <!-- data is bound to the matching array element in the data prop -->
-  <template slot="suggestion" slot-scope="{ data, htmlText }">
-    <span v-html="htmlText"></span>&nbsp;<small>{{ data.code }}</small>
+  <template v-slot:suggestion="slotProp">
+    <span v-html="slotProp.htmlText"></span>&nbsp;<small>{{ slotProp.data.code }}</small>
   </template>
+
 </vue-bootstrap-typeahead>
 ```
 
