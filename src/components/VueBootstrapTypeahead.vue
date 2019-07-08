@@ -34,6 +34,7 @@
       :text-variant="textVariant"
       :minMatchingChars="minMatchingChars"
       @hit="handleHit"
+      :rawResults="rawResults"
     >
       <!-- pass down all scoped slots -->
       <template v-for="(slot, slotName) in $scopedSlots" :slot="slotName" slot-scope="{ data, htmlText }">
@@ -93,7 +94,8 @@ export default {
     },
     placeholder: String,
     prepend: String,
-    append: String
+    append: String,
+    rawResults: Boolean
   },
 
   computed: {
