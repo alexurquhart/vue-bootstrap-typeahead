@@ -56,6 +56,9 @@ export default {
     minMatchingChars: {
       type: Number,
       default: 2
+    },
+    rawResults: {
+      type: Boolean
     }
   },
 
@@ -77,6 +80,10 @@ export default {
     },
 
     matchedItems() {
+      if (this.rawResults) {
+        return this.data
+      }
+
       if (this.query.length === 0 || this.query.length < this.minMatchingChars) {
         return []
       }
