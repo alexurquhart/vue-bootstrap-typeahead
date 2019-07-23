@@ -78,7 +78,7 @@ export default {
 
     matchedItems() {
       if (this.query.length === 0 || this.query.length < this.minMatchingChars) {
-        return []
+        return ['No Results']
       }
 
       const re = new RegExp(this.escapedQuery, 'gi')
