@@ -1,7 +1,8 @@
 <template>
   <div class="list-group shadow">
+     <p class="vbst-item list-group-item list-group-item-action" v-if="matchedItems.length == 0"> No results found</p>
     <vue-bootstrap-typeahead-list-item
-      v-if="matchedItems.length > 0"
+      v-else-if="matchedItems.length > 0"
       v-for="(item, id) in matchedItems" :key="id"
       :data="item.data"
       :html-text="highlight(item.text)"
@@ -13,7 +14,6 @@
         <slot name="suggestion" v-bind="{ data, htmlText }" />
       </template>
     </vue-bootstrap-typeahead-list-item>
-    <p v-else> No results found</p>
   </div>
 </template>
 
