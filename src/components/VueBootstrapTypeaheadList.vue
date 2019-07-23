@@ -1,6 +1,7 @@
 <template>
   <div class="list-group shadow">
     <vue-bootstrap-typeahead-list-item
+      v-if="matchedItems.length > 0"
       v-for="(item, id) in matchedItems" :key="id"
       :data="item.data"
       :html-text="highlight(item.text)"
@@ -12,6 +13,7 @@
         <slot name="suggestion" v-bind="{ data, htmlText }" />
       </template>
     </vue-bootstrap-typeahead-list-item>
+    <p v-else> No results found</p>
   </div>
 </template>
 
@@ -78,7 +80,7 @@ export default {
 
     matchedItems() {
       if (this.query.length === 0 || this.query.length < this.minMatchingChars) {
-        return ['No Results']
+        return []
       }
 
       const re = new RegExp(this.escapedQuery, 'gi')
