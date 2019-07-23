@@ -1,6 +1,8 @@
 <template>
   <div class="list-group shadow">
+     <p class="vbst-item list-group-item list-group-item-action" v-if="matchedItems.length == 0"> No results found</p>
     <vue-bootstrap-typeahead-list-item
+      v-else-if="matchedItems.length > 0"
       v-for="(item, id) in matchedItems" :key="id"
       :data="item.data"
       :html-text="highlight(item.text)"
