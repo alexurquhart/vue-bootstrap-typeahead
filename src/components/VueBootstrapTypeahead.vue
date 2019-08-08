@@ -113,6 +113,10 @@ export default {
           text: this.serializer(d)
         }
       })
+    },
+
+    inputValue: function() {
+      return this.value || ''
     }
   },
 
@@ -163,8 +167,7 @@ export default {
 
   data() {
     return {
-      isFocused: false,
-      inputValue: ''
+      isFocused: false
     }
   },
 
