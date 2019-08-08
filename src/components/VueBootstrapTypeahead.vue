@@ -113,6 +113,16 @@ export default {
           text: this.serializer(d)
         }
       })
+    },
+
+    inputValue: {
+      get: function() {
+        return this.value || ""
+      },
+
+      set: function(newValue) {
+        this.inputValue = newValue
+      }
     }
   },
 
@@ -137,7 +147,6 @@ export default {
         this.$emit('input', evt.text)
       }
 
-      this.inputValue = evt.text
       this.$emit('hit', evt.data)
       this.$refs.input.blur()
       this.isFocused = false
@@ -152,8 +161,6 @@ export default {
     },
 
     handleInput(newValue) {
-      this.inputValue = newValue
-
       // If v-model is being used, emit an input event
       if (typeof this.value !== 'undefined') {
         this.$emit('input', newValue)
@@ -163,8 +170,7 @@ export default {
 
   data() {
     return {
-      isFocused: false,
-      inputValue: ''
+      isFocused: false
     }
   },
 
