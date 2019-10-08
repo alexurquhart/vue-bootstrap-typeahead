@@ -3,8 +3,6 @@
     tabindex="0"
     href="#"
     :class="textClasses"
-    @mouseover="active = true"
-    @mouseout="active = false"
   >
     <slot name="suggestion" v-bind="{ data: data, htmlText: htmlText }">
       <span v-html="htmlText"></span>
@@ -21,6 +19,9 @@ export default {
     htmlText: {
       type: String
     },
+    active: {
+      type: Boolean
+    },
     backgroundVariant: {
       type: String
     },
@@ -29,19 +30,13 @@ export default {
     }
   },
 
-  data() {
-    return {
-      active: false
-    }
-  },
-
   computed: {
     textClasses() {
-      let classes = ''
-      classes += this.active ? 'active' : ''
-      classes += this.backgroundVariant ? ` bg-${this.backgroundVariant}` : ''
-      classes += this.textVariant ? ` text-${this.textVariant}` : ''
-      return `vbst-item list-group-item list-group-item-action ${classes}`
+      const classes = ['vbst-item', 'list-group-item', 'list-group-item-action']
+      if (this.active) classes.push('active')
+      if (this.backgroundVariant) classes.push(`bg-${this.backgroundVariant}`)
+      if (this.textVariant) classes.push(`text-${this.textVariant}`)
+      return classes.join(' ')
     }
   }
 }

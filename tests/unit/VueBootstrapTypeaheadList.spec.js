@@ -78,6 +78,6 @@ describe('VueBootstrapTypeaheadList', () => {
     wrapper.setProps({
       query: 'Canada'
     })
-    expect(wrapper.find(VueBootstrapTypeaheadListItem).vm.htmlText).toBe('<strong>Canada</strong>')
+    expect(wrapper.find(VueBootstrapTypeaheadListItem).vm.htmlText).toBe('<span class="vbt-highlighted">Canada</span>')
   })
 })
