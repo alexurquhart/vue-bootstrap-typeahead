@@ -1,5 +1,6 @@
 <template>
   <div class="list-group shadow">
+    <p class="vbst-item list-group-item list-group-item-action" v-if="loading">Searching ...</p>
     <vue-bootstrap-typeahead-list-item
       v-for="(item, id) in matchedItems" :key="id"
       :data="item.data"
@@ -56,6 +57,10 @@ export default {
     minMatchingChars: {
       type: Number,
       default: 2
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
   },
 
