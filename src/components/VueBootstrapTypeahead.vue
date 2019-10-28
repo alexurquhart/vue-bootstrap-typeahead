@@ -35,6 +35,7 @@
       :maxMatches="maxMatches"
       :minMatchingChars="minMatchingChars"
       :loading="loading"
+      :loading-text="loadingText"
       @hit="handleHit"
     >
       <!-- pass down all scoped slots -->
@@ -99,6 +100,10 @@ export default {
     loading: {
       type: Boolean,
       default: false
+    },
+    loadingText: {
+      type: String,
+      default: 'Searching ...'
     }
   },
 

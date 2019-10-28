@@ -1,6 +1,10 @@
 <template>
   <div class="list-group shadow">
-    <p class="vbst-item list-group-item list-group-item-action" v-if="loading">Searching ...</p>
+    <p class="vbst-item list-group-item list-group-item-action" v-if="loading">
+      <slot name="loading">
+        {{ loadingText }}
+      </slot>
+    </p>
     <vue-bootstrap-typeahead-list-item
       v-for="(item, id) in matchedItems" :key="id"
       :data="item.data"
@@ -61,6 +65,10 @@ export default {
     loading: {
       type: Boolean,
       default: false
+    },
+    loadingText: {
+      type: String,
+      default: 'Searching ...'
     }
   },
 
