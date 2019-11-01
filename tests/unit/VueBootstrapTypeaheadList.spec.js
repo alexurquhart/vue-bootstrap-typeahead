@@ -80,4 +80,15 @@ describe('VueBootstrapTypeaheadList', () => {
     })
     expect(wrapper.find(VueBootstrapTypeaheadListItem).vm.htmlText).toBe('<strong>Canada</strong>')
   })
+
+  it('Matches items from list ignoring diacritcs from input', () => {
+    wrapper.setProps({
+      query: 'Canadá'
+    })
+    wrapper.setProps({
+      removeDiacritcs: true
+    })    
+    expect(wrapper.find(VueBootstrapTypeaheadListItem).vm.htmlText).toBe('<strong>Canada</strong>')
+  })
+
 })
