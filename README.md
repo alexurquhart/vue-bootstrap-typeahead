@@ -110,7 +110,6 @@ export default {
 Name | Type | Default | Description
 --- | --- | --- | ---
 data | `Array` | | Array of data to be available for querying. **Required**
-diacritcs | `Boolean` | | If is set true the input is diacritics insensitive (the listing is still diacritcs sensitive)
 serializer | `Function` | `input => input` | Function used to convert the entries in the `data` array into a text string.
 size | `String` | | Size of the `input-group`. Valid values: `sm` or `lg`
 backgroundVariant | `String` | | Background color for the autocomplete result `list-group` items. [See valid values](http://getbootstrap.com/docs/4.1/utilities/colors/#background-color)
@@ -120,6 +119,7 @@ maxMatches | `Number` | 10 | Maximum amount of list items to appear.
 minMatchingChars | `Number` | 2 | Minimum matching characters in query before the typeahead list appears
 prepend | `String` | | Text to be prepended to the `input-group`
 append | `String` | | Text to be appended to the `input-group`
+removeDiacritcs | `Boolean` | `false`| If is set true the input is diacritics insensitive (the listing is still diacritcs sensitive)
 
 ### Events
 Name | Description
