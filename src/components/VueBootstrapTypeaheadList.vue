@@ -56,7 +56,11 @@ export default {
     minMatchingChars: {
       type: Number,
       default: 2
-    }
+    },
+    showOnFocus: {
+      type: Boolean,
+      default: false
+    },
   },
 
   computed: {
@@ -77,7 +81,7 @@ export default {
     },
 
     matchedItems() {
-      if (this.query.length === 0 || this.query.length < this.minMatchingChars) {
+      if (!this.showOnFocus && (this.query.length === 0 || this.query.length < this.minMatchingChars)) {
         return []
       }
 
