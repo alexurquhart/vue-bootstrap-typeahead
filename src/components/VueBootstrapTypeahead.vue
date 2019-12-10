@@ -16,6 +16,9 @@
         @focus="isFocused = true"
         @blur="handleBlur"
         @input="handleInput($event.target.value)"
+        @keyup.down="$emit('keyup.down', $event.target.value)"
+        @keyup.up="$emit('keyup.up', $event.target.value)"
+        @keyup.enter="$emit('keyup.enter', $event.target.value)"
         autocomplete="off"
       />
       <div v-if="$slots.append || append" class="input-group-append">
@@ -35,6 +38,7 @@
       :maxMatches="maxMatches"
       :minMatchingChars="minMatchingChars"
       :showOnFocus="showOnFocus"
+      :showAllResults="showAllResults"
       @hit="handleHit"
     >
       <!-- pass down all scoped slots -->
@@ -94,6 +98,10 @@ export default {
       default: 2
     },
     showOnFocus: {
+      type: Boolean,
+      default: false
+    },
+    showAllResults: {
       type: Boolean,
       default: false
     },
