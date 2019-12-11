@@ -192,6 +192,12 @@ export default {
   beforeDestroy() {
     this.$_ro.disconnect()
   }
+
+  watch: {
+    value: function(val) {
+        this.inputValue = val;
+    }
+  }
 }
 </script>
 
