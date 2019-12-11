@@ -177,7 +177,7 @@ export default {
   data() {
     return {
       isFocused: false,
-      inputValue: ''
+      inputValue: this.value || ''
     }
   },
 
