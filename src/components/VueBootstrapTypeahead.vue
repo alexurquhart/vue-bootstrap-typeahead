@@ -1,44 +1,58 @@
 <template>
   <div>
     <div :class="sizeClasses">
-      <div ref="prependDiv" v-if="$slots.prepend || prepend" class="input-group-prepend">
+      <div
+          class="input-group-prepend"
+          ref="prependDiv"
+          v-if="$slots.prepend || prepend"
+      >
         <slot name="prepend">
           <span class="input-group-text">{{ prepend }}</span>
         </slot>
       </div>
       <input
-        ref="input"
-        type="search"
-        :class="`form-control ${inputClass}`"
-        :placeholder="placeholder"
-        :aria-label="placeholder"
-        :value="inputValue"
-        @focus="isFocused = true"
-        @blur="handleBlur"
-        @input="handleInput($event.target.value)"
-        autocomplete="off"
+          :aria-label="placeholder"
+          :class="`form-control ${inputClass}`"
+          :placeholder="placeholder"
+          :value="inputValue"
+          @blur="handleBlur"
+          @focus="isFocused = true"
+          @input="handleInput($event.target.value)"
+          autocomplete="off"
+          ref="input"
+          type="search"
       />
-      <div v-if="$slots.append || append" class="input-group-append">
+      <div
+          class="input-group-append"
+          v-if="$slots.append || append"
+      >
         <slot name="append">
           <span class="input-group-text">{{ append }}</span>
         </slot>
       </div>
     </div>
     <vue-bootstrap-typeahead-list
-      class="vbt-autcomplete-list"
-      ref="list"
-      v-show="isFocused && data.length > 0"
-      :query="inputValue"
-      :data="formattedData"
-      :background-variant="backgroundVariant"
-      :text-variant="textVariant"
-      :maxMatches="maxMatches"
-      :minMatchingChars="minMatchingChars"
-      @hit="handleHit"
+        :background-variant="backgroundVariant"
+        :class="{'vbt-autcomplete-list--hidden': !(isFocused && data.length > 0)}"
+        :data="formattedData"
+        :maxMatches="maxMatches"
+        :minMatchingChars="minMatchingChars"
+        :query="inputValue"
+        :text-variant="textVariant"
+        @hit="handleHit"
+        class="vbt-autcomplete-list"
+        ref="list"
     >
       <!-- pass down all scoped slots -->
-      <template v-for="(slot, slotName) in $scopedSlots" :slot="slotName" slot-scope="{ data, htmlText }">
-        <slot :name="slotName" v-bind="{ data, htmlText }"></slot>
+      <template
+          :slot="slotName"
+          slot-scope="{ data, htmlText }"
+          v-for="(slot, slotName) in $scopedSlots"
+      >
+        <slot
+            :name="slotName"
+            v-bind="{ data, htmlText }"
+        ></slot>
       </template>
       <!-- below is the right solution, however if the user does not provide a scoped slot, vue will still set $scopedSlots.suggestion to a blank scope
       <template v-if="$scopedSlots.suggestion" slot="suggestion" slot-scope="{ data, htmlText }">
@@ -63,7 +77,10 @@ export default {
     size: {
       type: String,
       default: null,
-      validator: size => ['lg', 'sm'].indexOf(size) > -1
+      validator: size => [
+                           'lg',
+                           'sm'
+                         ].indexOf(size) > -1
     },
     value: {
       type: String
@@ -99,7 +116,7 @@ export default {
 
   computed: {
     sizeClasses() {
-      return this.size ? `input-group input-group-${this.size}` : 'input-group'
+      return this.size ? `input-group input-group-${ this.size }` : 'input-group'
     },
 
     formattedData() {
@@ -189,5 +206,22 @@ export default {
     max-height: 350px;
     overflow-y: auto;
     z-index: 999;
+  }
+
+
+  /* Fake for IE. because it doesn't emit the hit event when using display:none */
+  .vbt-autcomplete-list--hidden {
+    animation-name: hide;
+    animation-fill-mode: both;
+    animation-duration: .3s;
+    animation-timing-function: linear;
+  }
+
+
+  @keyframes hide {
+    to {
+      visibility: hidden;
+      display: none;
+    }
   }
 </style>
