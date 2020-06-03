@@ -75,6 +75,12 @@
                 <td></td>
                 <td>Text to be appended to the <code>input-group</code></td>
               </tr>
+              <tr>
+                <td><code>autocomplete</code></td>
+                <td>Boolean</td>
+                <td>false</td>
+                <td>disable auto suggestion from browsers</td>
+              </tr>
             </tbody>
           </table>
         </div>
