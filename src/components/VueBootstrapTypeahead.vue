@@ -9,6 +9,7 @@
       <input
         ref="input"
         type="search"
+        :name="name"
         :class="`form-control ${inputClass}`"
         :placeholder="placeholder"
         :aria-label="placeholder"
@@ -66,6 +67,9 @@ export default {
       validator: size => ['lg', 'sm'].indexOf(size) > -1
     },
     value: {
+      type: String
+    },
+    name: {
       type: String
     },
     data: {
