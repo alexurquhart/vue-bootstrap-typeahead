@@ -168,5 +168,6 @@ Please note that active development is done on the `Development` branch. PR's ar
 ## Sites using this component
 
 - [plottr.io](https://plottr.io) - Plan and map your running/cycling routes. This component is an offshoot from this project.
+- [thegamecrafter.com](https://www.thegamecrafter.com) - Manufacturers short run board games. Component used in various administrative interfaces.
 
 Send a pull request to add your site to this list!
