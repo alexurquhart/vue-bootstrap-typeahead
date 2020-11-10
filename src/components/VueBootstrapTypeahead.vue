@@ -34,6 +34,7 @@
       :text-variant="textVariant"
       :maxMatches="maxMatches"
       :minMatchingChars="minMatchingChars"
+      :justList="justList"
       @hit="handleHit"
     >
       <!-- pass down all scoped slots -->
@@ -91,6 +92,10 @@ export default {
     minMatchingChars: {
       type: Number,
       default: 2
+    },
+    justList: {
+      type: Boolean,
+      default: false
     },
     placeholder: String,
     prepend: String,
