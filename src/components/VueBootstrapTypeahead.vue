@@ -34,7 +34,7 @@
       :text-variant="textVariant"
       :maxMatches="maxMatches"
       :minMatchingChars="minMatchingChars"
-      :justList="justList"
+      :showAllResults="showAllResults"
       @hit="handleHit"
     >
       <!-- pass down all scoped slots -->
@@ -93,7 +93,7 @@ export default {
       type: Number,
       default: 2
     },
-    justList: {
+    showAllResults: {
       type: Boolean,
       default: false
     },
