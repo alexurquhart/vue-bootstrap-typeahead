@@ -107,7 +107,7 @@ export default {
       return this.data
         .filter((i) => i.text.match(re) !== null)
         .sort((a, b) => {
-          if (this.sortVariant === "lenght") {
+          if (this.sortVariant === "length") {
             return a.length - b.length;
           } else {
             const aIndex = a.text.indexOf(a.text.match(re)[0]);
