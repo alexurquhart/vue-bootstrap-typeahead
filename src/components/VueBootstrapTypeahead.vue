@@ -13,6 +13,7 @@
         :placeholder="placeholder"
         :aria-label="placeholder"
         :value="inputValue"
+        @keyup.enter="handleEnter"
         @focus="isFocused = true"
         @blur="handleBlur"
         @input="handleInput($event.target.value)"
@@ -158,6 +159,10 @@ export default {
       if (typeof this.value !== 'undefined') {
         this.$emit('input', newValue)
       }
+    },
+
+    handleEnter() {
+      this.$emit('enter', this.inputValue)
     }
   },
 
