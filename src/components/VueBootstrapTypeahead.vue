@@ -94,7 +94,11 @@ export default {
     },
     placeholder: String,
     prepend: String,
-    append: String
+    append: String,
+    autoEstimatePlace: {
+      type: Boolean,
+      default: false
+    },
   },
 
   computed: {
@@ -120,6 +124,15 @@ export default {
     resizeList(el) {
       const rect = el.getBoundingClientRect()
       const listStyle = this.$refs.list.$el.style
+      
+      if(this.autoEstimatePlace) {
+        const firstHalfOfScreen = rect.y < (screen.availHeight / 2);
+        if (!firstHalfOfScreen) {
+          listStyle.top = this.$refs.list.$el.offsetHeight * (-1) + 'px';
+        } else {
+          listStyle.top = "";
+        }
+      }
 
       // Set the width of the list on resize
       listStyle.width = rect.width + 'px'
