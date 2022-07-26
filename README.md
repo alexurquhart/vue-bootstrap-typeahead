@@ -1,5 +1,9 @@
 # vue-bootstrap-typeahead
 
+## Project Status
+
+This project is no longer being maintained.
+
 [![NPM](https://nodei.co/npm/vue-bootstrap-typeahead.png)](https://www.npmjs.com/package/vue-bootstrap-typeahead)
 
 [![Build Status](https://travis-ci.org/alexurquhart/vue-bootstrap-typeahead.svg?branch=master)](https://travis-ci.org/alexurquhart/vue-bootstrap-typeahead)
@@ -160,13 +164,3 @@ You can also view and edit examples hosted on CodePen [here](https://alexurquhar
 ## Contributing
 
 Please note that active development is done on the `Development` branch. PR's are welcome!
-
-## Contributing
-
-Please note that active development is done on the `Development` branch. PR's are welcome!
-
-## Sites using this component
-
-- [plottr.io](https://plottr.io) - Plan and map your running/cycling routes. This component is an offshoot from this project.
-
-Send a pull request to add your site to this list!
