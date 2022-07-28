@@ -18,6 +18,10 @@
 <script>
 import VueBootstrapTypeaheadListItem from './VueBootstrapTypeaheadListItem.vue'
 
+function normalize(text) {
+  return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+}
+
 function sanitize(text) {
   return text.replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
@@ -56,7 +60,10 @@ export default {
     minMatchingChars: {
       type: Number,
       default: 2
-    }
+    },
+    removeDiacritcs: {
+      type: Boolean,
+    },
   },
 
   computed: {
@@ -73,7 +80,10 @@ export default {
     },
 
     escapedQuery() {
-      return escapeRegExp(sanitize(this.query))
+      if(this.removeDiacritcs)
+        return escapeRegExp( normalize( sanitize(this.query) ) )
+      else
+        return escapeRegExp( sanitize(this.query) )
     },
 
     matchedItems() {
