@@ -30,6 +30,10 @@ export default new Router({
           component: () => import(/* webpackChunkName: "examples" */ './examples/BasicExample.vue')
         },
         {
+          path: 'arrow-keys',
+          component: () => import(/* webpackChunkName: "examples" */ './examples/ArrowKeys.vue')
+        },
+        {
           path: 'working-with-apis',
           component: () => import(/* webpackChunkName: "examples" */ './examples/WorkingWithAPIs.vue')
         },

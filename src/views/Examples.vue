@@ -29,6 +29,10 @@ export default {
           link: '/examples/basic-example'
         },
         {
+          name: 'Arrow Keys Selection',
+          link: '/examples/arrow-keys'
+        },
+        {
           name: 'Working With API\'s',
           link: '/examples/working-with-apis'
         },
