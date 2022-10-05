@@ -47,7 +47,7 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "coveralls": "^3.0.2",
     "highlight.js": "^9.12.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^7.0.0",
     "sass-loader": "^7.0.1",
     "underscore": "^1.9.1",
     "vue-gtm": "^2.0.0",
