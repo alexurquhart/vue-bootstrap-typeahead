@@ -56,6 +56,10 @@ export default {
     minMatchingChars: {
       type: Number,
       default: 2
+    },
+    showAllResults: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -79,6 +83,10 @@ export default {
     matchedItems() {
       if (this.query.length === 0 || this.query.length < this.minMatchingChars) {
         return []
+      }
+      // If the user only just want to list the possible suggestions (e.g. the filter are on backend) the showAllResults property is turn on
+      if (this.showAllResults) {
+        return this.data.slice(0, this.maxMatches)
       }
 
       const re = new RegExp(this.escapedQuery, 'gi')
