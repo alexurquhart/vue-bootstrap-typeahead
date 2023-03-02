@@ -13,9 +13,13 @@
         :placeholder="placeholder"
         :aria-label="placeholder"
         :value="inputValue"
+        :disabled="disabled"
         @focus="isFocused = true"
         @blur="handleBlur"
         @input="handleInput($event.target.value)"
+        @keyup.down="$emit('keyup.down', $event.target.value)"
+        @keyup.up="$emit('keyup.up', $event.target.value)"
+        @keyup.enter="$emit('keyup.enter', $event.target.value)"
         autocomplete="off"
       />
       <div v-if="$slots.append || append" class="input-group-append">
@@ -25,7 +29,7 @@
       </div>
     </div>
     <vue-bootstrap-typeahead-list
-      class="vbt-autcomplete-list"
+      class="vbt-autocomplete-list"
       ref="list"
       v-show="isFocused && data.length > 0"
       :query="inputValue"
@@ -53,13 +57,17 @@ import VueBootstrapTypeaheadList from './VueBootstrapTypeaheadList.vue'
 import ResizeObserver from 'resize-observer-polyfill'
 
 export default {
-  name: 'VueBootstrapTypehead',
+  name: 'VueBootstrapTypeahead',
 
   components: {
     VueBootstrapTypeaheadList
   },
 
   props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     size: {
       type: String,
       default: null,
@@ -161,10 +169,16 @@ export default {
     }
   },
 
+  watch: {
+    'value' (newValue) {
+      this.inputValue = newValue
+    }
+  },
+
   data() {
     return {
       isFocused: false,
-      inputValue: ''
+      inputValue: this.value
     }
   },
 
@@ -183,7 +197,7 @@ export default {
 </script>
 
 <style scoped>
-  .vbt-autcomplete-list {
+  .vbt-autocomplete-list {
     padding-top: 5px;
     position: absolute;
     max-height: 350px;
